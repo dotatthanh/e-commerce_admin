@@ -19,7 +19,7 @@
 
 
                 {{-- Template --}}
-                <li class="menu-title" key="t-menu">@lang('translation.Menu')</li>
+                {{-- <li class="menu-title" key="t-menu">@lang('translation.Menu')</li>
 
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
@@ -419,7 +419,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
             </ul>
         </div>
