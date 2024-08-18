@@ -5,14 +5,12 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateUserRequest extends FormRequest
+class UpdateSupplierRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -20,7 +18,7 @@ class UpdateUserRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules()
     {
@@ -28,14 +26,10 @@ class UpdateUserRequest extends FormRequest
             'name' => 'required|max:255',
             'email' => [
                 'required', 'string', 'email', 'max:255',
-                Rule::unique('users')->ignore($this->user),
+                Rule::unique('suppliers')->ignore($this->supplier),
             ],
-            'gender' => 'required',
-            'birthday' => 'required|date',
             'phone_number' => 'required|size:10',
             'address' => 'required|max:255',
-            'avatar' => 'nullable|image',
-            'roles' => 'required',
         ];
     }
 
@@ -44,9 +38,6 @@ class UpdateUserRequest extends FormRequest
         return [
             'name.required' => 'Họ và tên là trường bắt buộc.',
             'name.max' => 'Họ và tên không được dài quá :max ký tự.',
-            'gender.required' => 'Giới tính là trường bắt buộc.',
-            'birthday.required' => 'Ngày sinh là trường bắt buộc.',
-            'birthday.date' => 'Ngày sinh không đúng định dạng.',
             'phone_number.required' => 'Số điện thoại là trường bắt buộc.',
             'phone_number.size' => 'Số điện thoại phải là :size số.',
             'address.required' => 'Địa chỉ là trường bắt buộc.',
@@ -56,8 +47,6 @@ class UpdateUserRequest extends FormRequest
             'email.unique' => 'Email đã tồn tại.',
             'email.string' => 'Email phải là một chuỗi.',
             'email.max' => 'Email không được dài quá :max ký tự.',
-            'avatar.image' => 'Ảnh đại diện phải là tệp tin dạng ảnh!',
-            'roles.required' => 'Vai trò là trường bắt buộc.',
         ];
     }
 }

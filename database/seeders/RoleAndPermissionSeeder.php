@@ -21,8 +21,6 @@ class RoleAndPermissionSeeder extends Seeder
 
         // Gán vai trò
         User::find(1)->assignRole('Admin');
-        User::find(2)->assignRole('Giáo viên');
-        User::find(3)->assignRole('Sinh viên');
 
         $view_user = Permission::create(['name' => 'Xem danh sách tài khoản']);
         $create_user = Permission::create(['name' => 'Thêm tài khoản']);
@@ -106,7 +104,6 @@ class RoleAndPermissionSeeder extends Seeder
         $create_room = Permission::create(['name' => 'Thêm phòng thi']);
         $edit_room = Permission::create(['name' => 'Chỉnh sửa phòng thi']);
         $delete_room = Permission::create(['name' => 'Xóa phòng thi']);
-        $exam = Permission::create(['name' => 'Thi']);
 
         $super_admin->givePermissionTo($view_room);
         $super_admin->givePermissionTo($create_room);

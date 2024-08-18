@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DiscountCodeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,6 +23,9 @@ Route::middleware('auth')->group(function () {
 
 
 
+    Route::resource('categories', CategoryController::class);
+    Route::resource('suppliers', SupplierController::class);
+    Route::resource('discount-codes', DiscountCodeController::class);
     Route::resource('users', UserController::class);
     Route::get('/users/view-change-password/{user}', [UserController::class, 'viewChangePassword'])->name('users.view-change-password');
     Route::post('/users/change-password/{user}', [UserController::class, 'changePassword'])->name('users.change-password');

@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('title')
-    Thêm tài khoản
+    Thêm nhân viên
 @endsection
 
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Tài khoản
+            Nhân viên
         @endslot
         @slot('title')
-            Thêm tài khoản
+            Thêm nhân viên
         @endslot
     @endcomponent
     <div class="row">
@@ -30,7 +30,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <input name="password" type="password" class="form-control" placeholder="Nhập mật khẩu hiện tại">
-                                    {!! $errors->first('password', '<span class="error">:message</span>') !!}
+                                    {!! $errors->first('password', '<span class="error d-block mt-2">:message</span>') !!}
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <input name="password_confirmation" type="password" class="form-control" placeholder="Nhập mật khẩu hiện tại">
-                                    {!! $errors->first('password_confirmation', '<span class="error">:message</span>') !!}
+                                    {!! $errors->first('password_confirmation', '<span class="error d-block mt-2">:message</span>') !!}
                                 </div>
                             </div>
                         </div>

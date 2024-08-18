@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('title')
-    Thông tin tài khoản
+    Thông tin nhân viên
 @endsection
 
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Tài khoản
+            Nhân viên
         @endslot
         @slot('title')
-            Thông tin tài khoản
+            Thông tin nhân viên
         @endslot
     @endcomponent
     <div class="row">

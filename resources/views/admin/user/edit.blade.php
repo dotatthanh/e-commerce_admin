@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('title')
-    Cập nhật tài khoản
+    Cập nhật nhân viên
 @endsection
 
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Tài khoản
+            Nhân viên
         @endslot
         @slot('title')
-            Cập nhật tài khoản
+            Cập nhật nhân viên
         @endslot
     @endcomponent
 
@@ -18,7 +18,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Cập nhật tài khoản</h4>
+                    <h4 class="card-title mb-4">Cập nhật nhân viên</h4>
 
                     <form method="POST" action="{{ route('users.update', $data_edit->id) }}" enctype="multipart/form-data">
                         @method('PUT')

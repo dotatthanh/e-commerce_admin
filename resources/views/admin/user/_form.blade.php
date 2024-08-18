@@ -8,7 +8,7 @@
         <div class="form-group mb-3">
             <label for="name">Họ và tên <span class="text-danger">*</span></label>
             <input id="name" name="name" type="text" class="form-control" placeholder="Họ và tên" value="{{ old('name', $data_edit->name ?? '') }}">
-            {!! $errors->first('name', '<span class="error">:message</span>') !!}
+            {!! $errors->first('name', '<span class="error d-block mt-2">:message</span>') !!}
         </div>
 
         <div class="form-group mb-3">
@@ -21,7 +21,7 @@
                 <input type="radio" class="form-check-input" id="nu" name="gender" value="Nữ" {{ isset($data_edit->gender) && $data_edit->gender == 'Nữ' ? 'checked' : '' }}>
                 <label class="form-check-label" for="nu">Nữ</label>
             </div>
-            {!! $errors->first('gender', '<span class="error">:message</span>') !!}
+            {!! $errors->first('gender', '<span class="error d-block mt-2">:message</span>') !!}
         </div>
 
         <div class="form-group mb-3">
@@ -41,7 +41,7 @@
                 <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
             </div>
             <div class="text-danger" id="dobError" data-ajax-feedback="dob"></div>
-            {!! $errors->first('birthday', '<span class="error">:message</span>') !!}
+            {!! $errors->first('birthday', '<span class="error d-block mt-2">:message</span>') !!}
         </div>
 
         <div class="form-group mb-3">
@@ -62,14 +62,14 @@
                     </option>
                 @endforeach
             </select>
-            {!! $errors->first('roles', '<span class="error">:message</span>') !!}
+            {!! $errors->first('roles', '<span class="error d-block mt-2">:message</span>') !!}
         </div>
 
         {{-- @if ($routeType == 'create')
             <div class="form-group mb-3">
                 <label for="userpassword">Mật khẩu <span class="text-danger">*</span></label>
                 <input type="password" class="form-control" id="userpassword" placeholder="Nhập mật khẩu" autocomplete="new-password" name="password">
-                {!! $errors->first('password', '<span class="error">:message</span>') !!}
+                {!! $errors->first('password', '<span class="error d-block mt-2">:message</span>') !!}
             </div>
 
             <div class="form-group mb-3">
@@ -84,25 +84,25 @@
         <div class="form-group mb-3">
             <label for="email">Email <span class="text-danger">*</span></label>
             <input id="email" name="email" type="text" class="form-control" placeholder="Email" value="{{ old('email', $data_edit->email ?? '') }}">
-            {!! $errors->first('email', '<span class="error">:message</span>') !!}
+            {!! $errors->first('email', '<span class="error d-block mt-2">:message</span>') !!}
         </div>
 
         <div class="form-group mb-3">
             <label for="avatar">Ảnh đại diện @if($routeType == 'create')<span class="text-danger">*</span>@endif</label>
             <input id="avatar" name="avatar" type="file" class="form-control">
-            {!! $errors->first('avatar', '<span class="error">:message</span>') !!}
+            {!! $errors->first('avatar', '<span class="error d-block mt-2">:message</span>') !!}
         </div>
 
         <div class="form-group mb-3">
             <label for="phone_number">Số điện thoại <span class="text-danger">*</span></label>
             <input id="phone_number" name="phone_number" type="number" class="form-control" placeholder="Số điện thoại" value="{{ old('phone_number', $data_edit->phone_number ?? '') }}">
-            {!! $errors->first('phone_number', '<span class="error">:message</span>') !!}
+            {!! $errors->first('phone_number', '<span class="error d-block mt-2">:message</span>') !!}
         </div>
 
         <div class="form-group mb-3">
             <label for="address">Địa chỉ <span class="text-danger">*</span></label>
             <input id="address" name="address" type="text" class="form-control" placeholder="Địa chỉ" value="{{ old('address', $data_edit->address ?? '') }}">
-            {!! $errors->first('address', '<span class="error">:message</span>') !!}
+            {!! $errors->first('address', '<span class="error d-block mt-2">:message</span>') !!}
         </div>
 
     </div>

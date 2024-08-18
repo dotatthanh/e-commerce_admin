@@ -23,16 +23,16 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::query();
+        $data = User::query();
 
         if ($request->search) {
-            $users = $users->where('name', 'like', '%'.$request->search.'%');
+            $data = $data->where('name', 'like', '%'.$request->search.'%');
         }
 
-        $users = $users->paginate(10)->appends(['search' => $request->search]);
+        $data = $data->paginate(10)->appends(['search' => $request->search]);
 
         $data = [
-            'users' => $users,
+            'data' => $data,
         ];
 
         return view('admin.user.index', $data);
