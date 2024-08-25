@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('discount_codes', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('code')->unique()->comment('Mã giảm giá, duy nhất');
             $table->bigInteger('discount_amount')->comment('Số tiền giảm giá');
             $table->date('valid_from')->nullable()->comment('Ngày bắt đầu hiệu lực');

@@ -18,7 +18,7 @@ $(document).ready(function () {
       $(this).slideDown();
     },
     hide: function hide(e) {
-      confirm("Are you sure you want to delete this element?") && $(this).slideUp(e);
+      confirm("Bạn có chắc chắn muốn xóa phần tử này không?") && $(this).slideUp(e);
     },
     ready: function ready(e) {}
   }), window.outerRepeater = $(".outer-repeater").repeater({

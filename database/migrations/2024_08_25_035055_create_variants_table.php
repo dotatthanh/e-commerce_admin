@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->boolean('is_show');
-            $table->integer('sort')->default(1);
+        Schema::create('variants', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('color')->comment('Mã màu: #5FB7D4');
+            $table->string('size')->comment('L, M, S');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('variants');
     }
 };
