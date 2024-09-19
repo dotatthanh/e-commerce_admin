@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('color')->comment('Mã màu: #5FB7D4');
             $table->string('size')->comment('L, M, S');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

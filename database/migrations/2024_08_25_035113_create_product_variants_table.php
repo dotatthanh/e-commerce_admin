@@ -19,6 +19,7 @@ return new class extends Migration
             $table->primary(['product_id', 'variant_id']);
             $table->unsignedBigInteger('quantity')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
