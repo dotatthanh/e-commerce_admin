@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreCategoryRequest;
-use Illuminate\Support\Facades\DB;
+use App\Models\Category;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -17,8 +17,8 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $data = Category::query();
-        if($request->search){
-            $data = $data->where('name', 'like', '%'. $request->search .'%');
+        if ($request->search) {
+            $data = $data->where('name', 'like', '%'.$request->search.'%');
         }
         $data = $data->paginate(10)->appends(['search' => $request->search]);
 
@@ -47,9 +47,12 @@ class CategoryController extends Controller
             Category::create($request->all());
 
             DB::commit();
+
             return redirect()->route('categories.index')->with('alert-success', 'Thêm danh mục thành công!');
         } catch (Exception $e) {
             DB::rollBack();
+            \Log::error($e);
+
             return redirect()->back()->with('alert-error', 'Thêm danh mục thất bại!');
         }
     }
@@ -71,7 +74,7 @@ class CategoryController extends Controller
             'data_edit' => $category,
         ];
 
-        return view ('admin.category.edit', $data);
+        return view('admin.category.edit', $data);
     }
 
     /**
@@ -84,9 +87,12 @@ class CategoryController extends Controller
             $category->update($request->all());
 
             DB::commit();
+
             return redirect()->route('categories.index')->with('alert-success', 'Cập nhật danh mục thành công!');
         } catch (Exception $e) {
             DB::rollBack();
+            \Log::error($e);
+
             return redirect()->back()->with('alert-error', 'Cập nhật danh mục thất bại!');
         }
     }
@@ -105,7 +111,9 @@ class CategoryController extends Controller
 
             return redirect()->route('categories.index')->with('alert-success', 'Xóa danh mục thành công!');
         } catch (Exception $e) {
-            DB::rollback();
+            DB::rollBack();
+            \Log::error($e);
+
             return redirect()->back()->with('alert-error', 'Xóa danh mục thất bại!');
         }
     }

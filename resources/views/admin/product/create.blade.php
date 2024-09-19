@@ -13,11 +13,11 @@
 
     <div class="row">
         <div class="col-12">
-            {{-- <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data"> --}}
+            <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
 
                 @include('admin.product._form', ['routeType' => 'create'])
 
-            {{-- </form> --}}
+            </form>
         </div>
     </div>
     <!-- end row -->
@@ -64,7 +64,44 @@
     <!-- colorpicker init js-->
     <script src="{{ asset('/assets/libs/spectrum-colorpicker/spectrum-colorpicker.min.js') }}"></script>
 
-    <script>
+    <script type="text/javascript">
         $("#colorpicker-default").spectrum()
+        let productImages = $(`input[name="product_images"]`).val();
+
+        Dropzone.options.dropzone =
+        {
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            url: "{{ route('products.upload-image-details') }}",
+            method: "POST",
+            paramName: "file",
+            acceptedFiles: "image/*",
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            dictRemoveFileConfirmation: "Bạn có chắc chắn muốn xóa file?",
+            dictRemoveFile: "Xóa file",
+            success: function (file, response) {
+                let index = file.upload.uuid;
+                response.data.forEach(filePath => {
+                    if (filePath.indexOf(file.upload.filename) !== -1) {
+                        let input = `<input type="hidden" name="product_images[${index}]" value="${filePath}">`;
+                        $('form').append(input);
+                    }
+                });
+                file.index = index;
+            },
+            error: function (file, response) {
+                return false;
+            },
+            removedfile: function(file) {
+                var _ref;
+                (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+
+                if (file.index) {
+                    $('input[name="product_images[${file.index}]"]').remove();
+                }
+            },
+        };
     </script>
 @endsection

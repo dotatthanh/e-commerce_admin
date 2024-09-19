@@ -62,7 +62,8 @@ class RoleController extends Controller
 
             return redirect()->route('roles.index')->with('alert-success', 'Thêm vai trò thành công!');
         } catch (Exception $e) {
-            DB::rollback();
+            DB::rollBack();
+            \Log::error($e);
 
             return redirect()->back()->with('alert-error', 'Thêm vai trò thất bại!');
         }
@@ -116,7 +117,8 @@ class RoleController extends Controller
 
             return redirect()->route('roles.index')->with('alert-success', 'Cập nhật vai trò thành công!');
         } catch (Exception $e) {
-            DB::rollback();
+            DB::rollBack();
+            \Log::error($e);
 
             return redirect()->back()->with('alert-error', 'Cập nhật vai trò thất bại!');
         }
@@ -146,7 +148,8 @@ class RoleController extends Controller
 
             return redirect()->route('roles.index')->with('alert-success', 'Xóa vai trò thành công!');
         } catch (Exception $e) {
-            DB::rollback();
+            DB::rollBack();
+            \Log::error($e);
 
             return redirect()->back()->with('alert-error', 'Xóa vai trò thất bại!');
         }

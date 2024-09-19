@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('supplier_id');
             $table->string('file_path');
             $table->unsignedBigInteger('price');
-            $table->unsignedBigInteger('sale');
-            $table->longText('description');
+            $table->unsignedBigInteger('sale')->nullable();
+            $table->longText('description')->nullable();
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
             $table->unsignedBigInteger('quantity')->nullable()->default(null);
             $table->timestamps();

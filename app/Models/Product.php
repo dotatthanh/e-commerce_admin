@@ -4,20 +4,52 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
-    // public function optionValues()
-    // {
-    //     return $this->belongsToMany(OptionValue::class, 'product_option_values')
-    //                 ->withPivot('quantity');
-    // }
+    protected $fillable = [
+        'name',
+        'supplier_id',
+        'file_path',
+        'price',
+        'sale',
+        'description',
+        'supplier_id',
+        'quantity',
+    ];
 
-    // public function optionTypes()
-    // {
-    //     return $this->hasManyThrough(OptionType::class, OptionValue::class, 'id', 'id', 'id', 'option_type_id')
-    //                 ->distinct();
-    // }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($product) {
+            $product->productImages()->delete();
+            CategoryProduct::where('product_id', $product->id)->delete();
+            ProductVariant::where('product_id', $product->id)->delete();
+        });
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category_products', 'product_id', 'product_category_id');
+    }
+
+    public function productImages()
+    {
+        return $this->hasMany(ProductImage::class);
+    }
+
+    public function variants()
+    {
+        return $this->belongsToMany(Variant::class, 'product_variants')
+            ->withPivot('quantity');
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
 }

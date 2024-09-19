@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\DiscountCode;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreDiscountCodeRequest;
 use App\Http\Requests\UpdateDiscountCodeRequest;
-use Illuminate\Support\Facades\DB;
+use App\Models\DiscountCode;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class DiscountCodeController extends Controller
@@ -19,7 +19,7 @@ class DiscountCodeController extends Controller
     public function index(Request $request)
     {
         $data = DiscountCode::query();
-        if($request->search){
+        if ($request->search) {
             // $data = $data->where('name', 'like', '%'. $request->search .'%');
         }
         $data = $data->paginate(10)->appends(['search' => $request->search]);
@@ -50,10 +50,12 @@ class DiscountCodeController extends Controller
             DiscountCode::create($params);
 
             DB::commit();
+
             return redirect()->route('discount-codes.index')->with('alert-success', 'Thêm mã giảm giá thành công!');
         } catch (Exception $e) {
             DB::rollBack();
-            dd($e);
+            \Log::error($e);
+
             return redirect()->back()->with('alert-error', 'Thêm mã giảm giá thất bại!');
         }
     }
@@ -73,8 +75,7 @@ class DiscountCodeController extends Controller
         $params['valid_from'] = formatDate($request->valid_from);
         $params['valid_until'] = formatDate($request->valid_until);
 
-        if ($type === 'create')
-        {
+        if ($type === 'create') {
             $params['code'] = $this->createCode();
         }
 
@@ -98,7 +99,7 @@ class DiscountCodeController extends Controller
             'data_edit' => $discountCode,
         ];
 
-        return view ('admin.discount-code.edit', $data);
+        return view('admin.discount-code.edit', $data);
     }
 
     /**
@@ -112,9 +113,12 @@ class DiscountCodeController extends Controller
             $discountCode->update($params);
 
             DB::commit();
+
             return redirect()->route('discount-codes.index')->with('alert-success', 'Cập nhật mã giảm giá thành công!');
         } catch (Exception $e) {
             DB::rollBack();
+            \Log::error($e);
+
             return redirect()->back()->with('alert-error', 'Cập nhật mã giảm giá thất bại!');
         }
     }
@@ -133,7 +137,9 @@ class DiscountCodeController extends Controller
 
             return redirect()->route('discount-codes.index')->with('alert-success', 'Xóa mã giảm giá thành công!');
         } catch (Exception $e) {
-            DB::rollback();
+            DB::rollBack();
+            \Log::error($e);
+
             return redirect()->back()->with('alert-error', 'Xóa mã giảm giá thất bại!');
         }
     }

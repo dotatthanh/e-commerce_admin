@@ -30,7 +30,6 @@ class StoreUserRequest extends FormRequest
             'birthday' => 'required|date',
             'phone_number' => 'required|size:10',
             'address' => 'required|max:255',
-            // 'password' => 'required|confirmed|min:8|string',
             'avatar' => 'required|image',
             'roles' => 'required',
         ];
@@ -53,10 +52,6 @@ class StoreUserRequest extends FormRequest
             'email.unique' => 'Email đã tồn tại.',
             'email.string' => 'Email phải là một chuỗi.',
             'email.max' => 'Email không được dài quá :max ký tự.',
-            // 'password.required' => 'Mật khẩu là trường bắt buộc!',
-            // 'password.confirmed' => 'Xác nhận mật khẩu không chính xác!',
-            // 'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự!',
-            // 'password.string' => 'Mật khẩu phải là một chuỗi',
             'avatar.required' => 'Ảnh đại diện là trường bắt buộc!',
             'avatar.image' => 'Ảnh đại diện phải là tệp tin dạng ảnh!',
             'roles.required' => 'Vai trò là trường bắt buộc.',

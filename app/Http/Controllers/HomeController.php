@@ -11,16 +11,6 @@ use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
     public static function middleware(): array
     {
         return [
@@ -35,8 +25,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        if (view()->exists("template.".$request->path())) {
-            return view("template.".$request->path());
+        if (view()->exists('template.'.$request->path())) {
+            return view('template.'.$request->path());
         }
 
         return abort(404);

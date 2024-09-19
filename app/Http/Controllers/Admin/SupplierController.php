@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Supplier;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreSupplierRequest;
 use App\Http\Requests\UpdateSupplierRequest;
-use Illuminate\Support\Facades\DB;
+use App\Models\Supplier;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SupplierController extends Controller
 {
@@ -18,8 +18,8 @@ class SupplierController extends Controller
     public function index(Request $request)
     {
         $data = Supplier::query();
-        if($request->search){
-            $data = $data->where('name', 'like', '%'. $request->search .'%');
+        if ($request->search) {
+            $data = $data->where('name', 'like', '%'.$request->search.'%');
         }
         $data = $data->paginate(10)->appends(['search' => $request->search]);
 
@@ -48,9 +48,12 @@ class SupplierController extends Controller
             Supplier::create($request->all());
 
             DB::commit();
+
             return redirect()->route('suppliers.index')->with('alert-success', 'Thêm nhà cung cấp thành công!');
         } catch (Exception $e) {
             DB::rollBack();
+            \Log::error($e);
+
             return redirect()->back()->with('alert-error', 'Thêm nhà cung cấp thất bại!');
         }
     }
@@ -72,7 +75,7 @@ class SupplierController extends Controller
             'data_edit' => $supplier,
         ];
 
-        return view ('admin.supplier.edit', $data);
+        return view('admin.supplier.edit', $data);
     }
 
     /**
@@ -85,9 +88,12 @@ class SupplierController extends Controller
             $supplier->update($request->all());
 
             DB::commit();
+
             return redirect()->route('suppliers.index')->with('alert-success', 'Cập nhật nhà cung cấp thành công!');
         } catch (Exception $e) {
             DB::rollBack();
+            \Log::error($e);
+
             return redirect()->back()->with('alert-error', 'Cập nhật nhà cung cấp thất bại!');
         }
     }
@@ -106,7 +112,9 @@ class SupplierController extends Controller
 
             return redirect()->route('suppliers.index')->with('alert-success', 'Xóa nhà cung cấp thành công!');
         } catch (Exception $e) {
-            DB::rollback();
+            DB::rollBack();
+            \Log::error($e);
+
             return redirect()->back()->with('alert-error', 'Xóa nhà cung cấp thất bại!');
         }
     }

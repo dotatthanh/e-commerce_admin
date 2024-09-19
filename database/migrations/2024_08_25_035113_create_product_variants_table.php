@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('product_variants', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->unsignedBigInteger('variant_id');
             $table->foreign('variant_id')->references('id')->on('variants')->onDelete('cascade');
-            $table->primary(['product_id', 'variant_id']);
+            $table->unique(['product_id', 'variant_id']);
             $table->unsignedBigInteger('quantity')->default(0);
             $table->timestamps();
             $table->softDeletes();

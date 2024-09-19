@@ -99,7 +99,8 @@ class UserController extends Controller
 
             return redirect()->route('users.index')->with('alert-success', 'Thêm nhân viên thành công!');
         } catch (Exception $e) {
-            DB::rollback();
+            DB::rollBack();
+            \Log::error($e);
 
             return redirect()->back()->with('alert-error', 'Thêm nhân viên thất bại!');
         }
@@ -164,7 +165,6 @@ class UserController extends Controller
                 $file_path = 'uploads/avatar/user/'.$name;
                 Storage::disk('public_uploads')->putFileAs('avatar/user', $request->avatar, $name);
                 $data['avatar'] = $file_path;
-
             }
             $user->update($data);
 
@@ -179,8 +179,8 @@ class UserController extends Controller
 
             return redirect()->route('users.index')->with('alert-success', 'Sửa nhân viên thành công!');
         } catch (Exception $e) {
-            dd($e);
-            DB::rollback();
+            DB::rollBack();
+            \Log::error($e);
 
             return redirect()->back()->with('alert-error', 'Sửa nhân viên thất bại!');
         }
@@ -203,7 +203,8 @@ class UserController extends Controller
 
             return redirect()->route('users.index')->with('alert-success', 'Xóa nhân viên thành công!');
         } catch (Exception $e) {
-            DB::rollback();
+            DB::rollBack();
+            \Log::error($e);
 
             return redirect()->back()->with('alert-error', 'Xóa nhân viên thất bại!');
         }
@@ -231,7 +232,8 @@ class UserController extends Controller
 
             return redirect()->back()->with('alert-success', 'Đổi mật khẩu thành công!');
         } catch (Exception $e) {
-            DB::rollback();
+            DB::rollBack();
+            \Log::error($e);
 
             return redirect()->back()->with('alert-error', 'Đổi mật khẩu thất bại!');
         }

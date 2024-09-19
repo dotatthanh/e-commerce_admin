@@ -28,6 +28,13 @@
                         <span key="t-user">Danh mục sản phẩm</span>
                     </a>
                 </li>
+                
+                <li>
+                    <a href="{{ route('products.index') }}" class="waves-effect">
+                        <i class="bx bx-user-circle"></i>
+                        <span key="t-user">Sản phẩm</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="{{ route('discount-codes.index') }}" class="waves-effect">

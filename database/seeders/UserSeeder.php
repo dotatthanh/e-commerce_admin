@@ -14,8 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // // Thêm admin
-        User::truncate();
+        // Thêm admin
         User::create([
             'id' => 1,
             'code' => 'ADMIN',

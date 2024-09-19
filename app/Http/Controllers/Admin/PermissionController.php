@@ -115,7 +115,8 @@ class PermissionController extends Controller
 
             return redirect()->route('permissions.index')->with('alert-success', 'Cập nhật quyền thành công!');
         } catch (Exception $e) {
-            DB::rollback();
+            DB::rollBack();
+            \Log::error($e);
 
             return redirect()->back()->with('alert-error', 'Cập nhật quyền thất bại!');
         }

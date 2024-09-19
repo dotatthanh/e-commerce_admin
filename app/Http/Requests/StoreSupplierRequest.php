@@ -29,7 +29,7 @@ class StoreSupplierRequest extends FormRequest
         ];
     }
 
-    public function messages() 
+    public function messages()
     {
         return [
             'name.string' => 'Tên nhà cung cấp không được chứa các ký tự đặc biệt.',

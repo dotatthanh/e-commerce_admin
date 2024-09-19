@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DiscountCodeController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,8 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
-
-
+    Route::post('/upload-image-details', [ProductController::class, 'uploadImageDetails'])->name('products.upload-image-details');
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('suppliers', SupplierController::class);
@@ -35,4 +34,3 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-
