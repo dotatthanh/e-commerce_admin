@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\Color;
 
 class StoreProductRequest extends FormRequest
 {
@@ -29,8 +30,10 @@ class StoreProductRequest extends FormRequest
             'categories' => 'required',
             'supplier_id' => 'required',
             'product_images' => 'required',
-            'description' => 'required',
-            'variants' => 'nullable|array',
+            'description' => 'nullable',
+            'variants' => 'required|array',
+            'variants.*.size' => 'required',
+            'variants.*.color' => ['required', new Color]
         ];
     }
 
@@ -51,7 +54,10 @@ class StoreProductRequest extends FormRequest
             'supplier_id.required' => 'Nhà cung cấp là trường bắt buộc.',
             'product_images.required' => 'Ảnh chi tiết sản phẩm là trường bắt buộc.',
             'description.required' => 'Mô tả là trường bắt buộc.',
-            // 'variants.array' => 'Biến thể là trường bắt buộc.',
+            'variants.required' => 'Biến thể là trường bắt buộc.',
+            'variants.array' => 'Biến thể phải là mảng.',
+            'variants.*.size.required' => 'Size là trường bắt buộc.',
+            'variants.*.color.required' => 'Màu là trường bắt buộc.',
         ];
     }
 }

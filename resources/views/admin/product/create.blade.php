@@ -32,11 +32,7 @@
     <link href="{{ asset('/assets/libs/dropzone/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- colorpicker css -->
-    {{-- <link href="{{ asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" /> --}}
-    {{-- <link href="{{ asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css"> --}}
     <link href="{{ asset('/assets/libs/spectrum-colorpicker/spectrum-colorpicker.min.css') }}" rel="stylesheet" type="text/css">
-    {{-- <link href="{{ asset('/assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('/assets/libs/bootstrap-touchspin/bootstrap-touchspin.min.css') }}" rel="stylesheet" type="text/css" /> --}}
 @endsection
 
 @section('script')
@@ -59,13 +55,15 @@
     <script src="{{ asset('/assets/libs/jquery-repeater/jquery-repeater.min.js') }}"></script>
 
     <!-- repeater init js-->
-    <script src="{{ asset('/assets/js/pages/form-repeater.int.js') }}"></script>
+    <script src="{{ asset('/assets/js/pages/product/form-repeater.int.js') }}"></script>
 
     <!-- colorpicker init js-->
     <script src="{{ asset('/assets/libs/spectrum-colorpicker/spectrum-colorpicker.min.js') }}"></script>
 
     <script type="text/javascript">
-        $("#colorpicker-default").spectrum()
+        $(document).ready(function () {
+            $(".colorpicker-default").spectrum()
+        });
         let productImages = $(`input[name="product_images"]`).val();
 
         Dropzone.options.dropzone =
@@ -100,6 +98,28 @@
 
                 if (file.index) {
                     $('input[name="product_images[${file.index}]"]').remove();
+                }
+            },
+            init: function () {
+                var existingImages = @json(old('product_images'));
+                if (existingImages != null) {
+                    // Duyệt qua các ảnh có sẵn
+                    Object.keys(existingImages).forEach(function(uuid) {
+                        var imageUrl = existingImages[uuid];
+                        var mockFile = { name: uuid, size: 12345 }; // Size có thể tùy chỉnh nếu cần
+
+                        // Hiển thị ảnh giả trong Dropzone
+                        this.emit("addedfile", mockFile);
+                        this.emit("thumbnail", mockFile, '/' + imageUrl); // Hiển thị thumbnail từ URL
+                        this.emit("complete", mockFile);
+
+                        // Thêm input ẩn chứa thông tin ảnh vào form
+                        let input = `<input type="hidden" name="product_images[${uuid}]" value="${imageUrl}">`;
+                        $('form').append(input);
+
+                        // Thêm file vào danh sách file của Dropzone
+                        this.files.push(mockFile);
+                    }, this);
                 }
             },
         };

@@ -18,7 +18,6 @@ class Product extends Model
         'sale',
         'description',
         'supplier_id',
-        'quantity',
     ];
 
     protected static function boot()

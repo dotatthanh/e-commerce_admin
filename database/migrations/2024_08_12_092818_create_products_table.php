@@ -20,7 +20,6 @@ return new class extends Migration
             $table->unsignedBigInteger('sale')->nullable();
             $table->longText('description')->nullable();
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
-            $table->unsignedBigInteger('quantity')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

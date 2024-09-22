@@ -91,7 +91,6 @@
         </div>
         {!! $errors->first('product_images', '<span class="error d-block mt-2">:message</span>') !!}
     </div>
-
 </div>
 
 <div class="card">
@@ -101,7 +100,6 @@
         <textarea id="elm1" name="description"></textarea>
         {!! $errors->first('description', '<span class="error d-block mt-2">:message</span>') !!}
     </div>
-
 </div>
 
 <div class="card">
@@ -109,27 +107,51 @@
         <h4 class="card-title mb-4">Biến thể <span class="text-danger">*</span></h4>
         <div class="repeater" enctype="multipart/form-data">
             <div data-repeater-list="variants">
-                <div data-repeater-item class="row">
-                    <div class="mb-3 col-lg-3">
-                        <label>Size</label>
-                        <input type="text" name="size" class="form-control" placeholder="S, M, L, XL, XXL, XXXL" />
-                    </div>
+                @if (old('variants'))
+                    @foreach (old('variants') as $variant)
+                        <div data-repeater-item class="row">
+                            <div class="mb-3 col-lg-3">
+                                <label>Size <span class="text-danger">*</span></label>
+                                <input type="text" name="size" class="form-control"  placeholder="S, M, L, XL, XXL, XXXL" value="{{ $variant['size'] }}" />
+                                {!! $errors->first('variants.*.size', '<span class="error d-block mt-2">:message</span>') !!}
+                            </div>
 
-                    <div class="mb-3 col-lg-3">
-                        <label>Color</label>
-                        <input type="text" name="color" class="form-control" id="colorpicker-default" value="#50a5f1">
-                    </div>
+                            <div class="mb-3 col-lg-3">
+                                <label>Màu <span class="text-danger">*</span></label>
+                                <input type="text" name="color" class="form-control colorpicker-default" value="{{ $variant['color'] }}" />
+                                {!! $errors->first('variants.*.color', '<span class="error d-block mt-2">:message</span>') !!}
+                            </div>
 
-                    <div class="col-lg-1 align-self-end mb-3">
-                        <div class="d-grid">
-                            <input data-repeater-delete type="button" class="btn btn-danger" value="Delete" />
+                            <div class="col-lg-1 align-self-end mb-3">
+                                <div class="d-grid">
+                                    <input data-repeater-delete type="button" class="btn btn-danger" value="Xóa" />
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div data-repeater-item class="row">
+                        <div class="mb-3 col-lg-3">
+                            <label>Size <span class="text-danger">*</span></label>
+                            <input type="text" name="size" class="form-control"  placeholder="S, M, L, XL, XXL, XXXL" />
+                        </div>
+
+                        <div class="mb-3 col-lg-3">
+                            <label>Màu <span class="text-danger">*</span></label>
+                            <input type="text" name="color"  class="form-control colorpicker-default">
+                        </div>
+
+                        <div class="col-lg-1 align-self-end mb-3">
+                            <div class="d-grid">
+                                <input data-repeater-delete type="button" class="btn btn-danger" value="Xóa" />
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                @endif
             </div>
-            <input data-repeater-create type="button" class="btn btn-success mt-3 mt-lg-0" value="Add" />
+            <input data-repeater-create type="button" class="btn btn-success mt-3 mt-lg-0" value="Thêm" />
         </div>
+        {!! $errors->first('variants', '<span class="error d-block mt-2">:message</span>') !!}
     </div>
 </div>
 
