@@ -37,6 +37,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('import-orders.index') }}" class="waves-effect">
+                        <i class="bx bx-user-circle"></i>
+                        <span key="t-user">Đơn nhập hàng</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('discount-codes.index') }}" class="waves-effect">
                         <i class="bx bx-user-circle"></i>
                         <span key="t-user">Mã giảm giá</span>

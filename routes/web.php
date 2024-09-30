@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\ImportOrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('suppliers', SupplierController::class);
     Route::resource('discount-codes', DiscountCodeController::class);
     Route::resource('users', UserController::class);
+    Route::resource('import-orders', ImportOrderController::class);
     Route::get('/users/view-change-password/{user}', [UserController::class, 'viewChangePassword'])->name('users.view-change-password');
     Route::post('/users/change-password/{user}', [UserController::class, 'changePassword'])->name('users.change-password');
 });
