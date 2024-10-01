@@ -20,7 +20,7 @@ class Color implements ValidationRule
                         '^rgba\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(0|1|0?\.\d+)\s*\)$|' . // RGBA (rgba(255, 255, 255, 0.5))
                         '^hsl\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*\)$/', $value)) {
             // Nếu không khớp, gọi $fail để báo lỗi
-            $fail('Màu phải là mã màu hợp lệ (hex, rgb, rgba, or hsl).');
+            $fail('Mã màu phải là mã màu hợp lệ (hex, rgb, rgba, or hsl).');
         }
     }
 }

@@ -1,22 +1,21 @@
 @extends('layouts.master')
 
 @section('title')
-    Thêm sản phẩm
+    Cập nhật sản phẩm
 @endsection
 
 @section('content')
 
     @component('components.breadcrumb')
         @slot('li_1') Sản phẩm @endslot
-        @slot('title') Thêm sản phẩm @endslot
+        @slot('title') Cập nhật sản phẩm @endslot
     @endcomponent
 
     <div class="row">
         <div class="col-12">
-            <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data" id="form-product">
-
-                @include('admin.product._form', ['routeType' => 'create'])
-
+            <form method="POST" action="{{ route('products.update', $data_edit->id) }}" enctype="multipart/form-data" id="form-product">
+                @method('PUT')
+                @include('admin.product._form', ['routeType' => 'edit'])
             </form>
         </div>
     </div>
@@ -96,12 +95,10 @@
                 var _ref;
                 (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
 
-                if (file.index) {
-                    $(`input[name="product_images[${file.index}]"]`).remove();
-                }
+                $(`input[name="product_images[${file.index}]"]`).remove();
             },
             init: function () {
-                var existingImages = @json(old('product_images'));
+                var existingImages = @json(old('product_images', $data_edit->productImages->pluck('file_path', 'id')));
                 if (existingImages != null) {
                     $.each(existingImages, function(uuid, filePath) {
                         var fileName = filePath.split('/').pop();

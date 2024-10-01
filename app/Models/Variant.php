@@ -11,7 +11,8 @@ class Variant extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'color',
+        'color_code',
+        'color_name',
         'size',
     ];
 }

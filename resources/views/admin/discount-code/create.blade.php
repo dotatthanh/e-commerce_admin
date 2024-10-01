@@ -32,28 +32,3 @@
         </div>
     </div>
 @endsection
-
-@section('script')
-    <!-- datepicker css -->
-    <script src="{{ asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
-    <!-- select 2 plugin -->
-    <script src="{{ asset('assets\libs\select2\select2.min.js') }}"></script>
-
-    <!-- init js -->
-    <script src="{{ asset('assets\js\pages\ecommerce-select2.init.js') }}"></script>
-
-    <script src="{{ asset('/assets/libs/spectrum-colorpicker/spectrum-colorpicker.min.js') }}"></script>
-    <script src="{{ asset('/assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.js') }}"></script>
-    <script src="{{ asset('/assets/libs/bootstrap-touchspin/bootstrap-touchspin.min.js') }}"></script>
-    <script src="{{ asset('/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
-
-    <!-- form advanced init -->
-    <script src="{{ asset('/assets/js/pages/form-advanced.init.js') }}"></script>
-@endsection
-
-@section('css')
-    <!-- datepicker css -->
-    <link href="{{ asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css">
-    <!-- select2 css -->
-    <link href="{{ asset('assets\libs\select2\select2.min.css') }}" rel="stylesheet" type="text/css">
-@endsection

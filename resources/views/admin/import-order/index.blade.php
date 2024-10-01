@@ -82,22 +82,15 @@
 @endsection
 
 @section('script')
-<script>
-    $(document).ready(function() {
-        function openConfirmModal(userId) {
-            console.log('==> user id', userId)
-            $('#confirmModal').modal('show');
-            $('#confirmButton').data('user-id', userId);
-            $('#confirmButton').on('click', function() {
-                var userId = $(this).data('user-id');
-                $(`#delete-user-form-${userId}`).submit();
+    <script>
+        $(document).ready(function() {
+            $('.btn-delete-user').on('click', function() {
+                const id = $(this).data('id');
+                $('#confirmModal').modal('show');
+                $('#confirmButton').on('click', function() {
+                    $(`#delete-form-${id}`).submit();
+                });
             });
-        }
-
-        $('.btn-delete-user').on('click', function() {
-            var userId = $(this).data('user');
-            openConfirmModal(userId);
         });
-    });
-</script>
+    </script>
 @endsection

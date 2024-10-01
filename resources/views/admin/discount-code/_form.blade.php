@@ -53,3 +53,13 @@
 
 <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">Lưu lại</button>
 <a href="{{ route('discount-codes.index') }}" class="btn btn-secondary waves-effect">Quay lại</a>
+
+@section('script')
+    <!-- datepicker css -->
+    <script src="{{ asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+@endsection
+
+@section('css')
+    <!-- datepicker css -->
+    <link href="{{ asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css">
+@endsection

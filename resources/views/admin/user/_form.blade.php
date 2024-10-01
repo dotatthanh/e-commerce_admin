@@ -65,19 +65,6 @@
             {!! $errors->first('roles', '<span class="error d-block mt-2">:message</span>') !!}
         </div>
 
-        {{-- @if ($routeType == 'create')
-            <div class="form-group mb-3">
-                <label for="userpassword">Mật khẩu <span class="text-danger">*</span></label>
-                <input type="password" class="form-control" id="userpassword" placeholder="Nhập mật khẩu" autocomplete="new-password" name="password">
-                {!! $errors->first('password', '<span class="error d-block mt-2">:message</span>') !!}
-            </div>
-
-            <div class="form-group mb-3">
-                <label for="password_confirmation">Xác nhận mật khẩu <span class="text-danger">*</span></label>
-                <input type="password" class="form-control" id="password_confirmation" placeholder="Nhập xác nhận mật khẩu" name="password_confirmation">
-            </div>
-        @endif --}}
-
     </div>
 
     <div class="col-sm-6">
@@ -110,3 +97,20 @@
 
 <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">Lưu lại</button>
 <a href="{{ route('users.index') }}" class="btn btn-secondary waves-effect">Quay lại</a>
+
+@section('script')
+    <!-- datepicker css -->
+    <script src="{{ asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <!-- select 2 plugin -->
+    <script src="{{ asset('assets\libs\select2\select2.min.js') }}"></script>
+
+    <!-- init js -->
+    <script src="{{ asset('assets\js\pages\ecommerce-select2.init.js') }}"></script>
+@endsection
+
+@section('css')
+    <!-- datepicker css -->
+    <link href="{{ asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- select2 css -->
+    <link href="{{ asset('assets\libs\select2\select2.min.css') }}" rel="stylesheet" type="text/css">
+@endsection

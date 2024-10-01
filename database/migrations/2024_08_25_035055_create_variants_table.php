@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('variants', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('color')->comment('Mã màu: #5FB7D4');
+            $table->string('color_name')->comment('Tên màu: Đỏ');
+            $table->string('color_code')->comment('Mã màu: #5FB7D4');
             $table->string('size')->comment('L, M, S');
             $table->timestamps();
             $table->softDeletes();

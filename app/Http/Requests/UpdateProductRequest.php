@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\Color;
 
-class StoreProductRequest extends FormRequest
+class UpdateProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'file_path' => 'required|image',
+            'file_path' => 'nullable|image',
             'price' => 'required|min:1|numeric',
             'sale' => 'nullable|between:1,100|numeric',
             'categories' => 'required',
@@ -44,7 +44,6 @@ class StoreProductRequest extends FormRequest
             'name.string' => 'Tên sản phẩm không được chứa các ký tự đặc biệt.',
             'name.max' => 'Tên sản phẩm không được phép quá 255 ký tự.',
             'name.required' => 'Tên sản phẩm là trường bắt buộc.',
-            'file_path.required' => 'Ảnh sản phẩm là trường bắt buộc.',
             'file_path.image' => 'Ảnh sản phẩm phải là tệp tin dạng ảnh.',
             'price.required' => 'Giá bán là trường bắt buộc.',
             'price.min' => 'Giá bán phải lớn hơn hoặc bằng :min.',

@@ -55,6 +55,7 @@ class ImportOrderController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         DB::beginTransaction();
         try {
             // tạo đơn nhập hàng

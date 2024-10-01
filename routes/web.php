@@ -23,7 +23,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
-    Route::post('/upload-image-details', [ProductController::class, 'uploadImageDetails'])->name('products.upload-image-details');
+    Route::post('/product/upload-image-details', [ProductController::class, 'uploadImageDetails'])->name('products.upload-image-details');
+    Route::post('/product/get-variants/{id}', [ProductController::class, 'getVariants'])->name('products.get-variants');
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('suppliers', SupplierController::class);

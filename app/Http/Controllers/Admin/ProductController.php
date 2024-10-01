@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\ProductVariant;
 use App\Models\Supplier;
 use App\Models\Variant;
 use Exception;
@@ -58,7 +60,7 @@ class ProductController extends Controller
             $data[] = $this->uploadImage($file, 'product/detail');
         }
 
-        return $this->responseSuccess(Response::HTTP_OK, $data, 'ngon');
+        return $this->responseSuccess(Response::HTTP_OK, $data);
     }
 
     private function uploadImage(UploadedFile $file, $dirPath)
@@ -100,6 +102,11 @@ class ProductController extends Controller
         }
     }
 
+    private function deleteProductImage($productId)
+    {
+        ProductImage::where('product_id', $productId)->delete();
+    }
+
     private function createProductImage($productImages, $productId)
     {
         foreach ($productImages as $filePath) {
@@ -112,6 +119,7 @@ class ProductController extends Controller
 
     private function syncVariantsWithProduct($product, $variants)
     {
+        $variantIds = [];
         foreach ($variants as $item) {
             $item['size'] = strtoupper($item['size']);
             $variant = Variant::where($item)->first();
@@ -120,9 +128,10 @@ class ProductController extends Controller
                 $variant = Variant::create($item);
             }
 
-            // tạo quan hệ product - variant
-            $product->variants()->attach($variant->id);
+            $variantIds[] = $variant->id;
         }
+        // sync quan hệ product - variant
+        $product->variants()->sync($variantIds);
     }
 
     /**
@@ -138,15 +147,50 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $suppliers = Supplier::all();
+        $categories = Category::all();
+        $data = [
+            'suppliers' => $suppliers,
+            'categories' => $categories,
+            'data_edit' => $product,
+        ];
+
+        return view('admin.product.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        // dd($request->product_images);
+        DB::beginTransaction();
+        try {
+            $params = $request->all();
+            if ($request->file('file_path')) {
+                $params['file_path'] = $this->uploadImage($request->file_path, 'product');
+            }
+            $product->update($params);
+
+            // product category
+            $product->categories()->sync($request->categories);
+
+            // product image
+            $this->deleteProductImage($product->id);
+            $this->createProductImage($request->product_images, $product->id);
+
+            // variants
+            $this->syncVariantsWithProduct($product, $request->variants);
+
+            DB::commit();
+
+            return redirect()->route('products.index')->with('alert-success', 'Cập nhật sản phẩm thành công!');
+        } catch (Exception $e) {
+            DB::rollBack();
+            \Log::error($e);
+
+            return redirect()->back()->with('alert-error', 'Cập nhật sản phẩm thất bại!');
+        }
     }
 
     /**
@@ -168,5 +212,11 @@ class ProductController extends Controller
 
             return redirect()->back()->with('alert-error', 'Xóa sản phẩm thất bại!');
         }
+    }
+
+    public function getVariants($id)
+    {
+        $data = ProductVariant::with('variant')->select('id', 'product_id', 'variant_id', 'quantity')->where('product_id', $id)->get();
+        return $this->responseSuccess(Response::HTTP_OK, $data);
     }
 }

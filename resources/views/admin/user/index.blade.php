@@ -106,10 +106,10 @@
                                             {{-- @can('Xóa nhân viên') --}}
                                             @if (auth()->id() != $item->id)
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xóa nhân viên">
-                                                <form id="delete-user-form-{{ $item->id }}" method="post" action="{{ route('users.destroy', $item->id) }}">
+                                                <form id="delete-form-{{ $item->id }}" method="post" action="{{ route('users.destroy', $item->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" data-user="{{ $item->id }}" data-bs-toggle="modal" class="btn btn-sm bg-danger text-danger bg-soft btn-delete-user">
+                                                    <button type="button" data-id="{{ $item->id }}" data-bs-toggle="modal" class="btn btn-sm bg-danger text-danger bg-soft btn-delete-user">
                                                         <i class="mdi mdi-delete-outline"></i>
                                                     </button>
                                                 </form>
@@ -138,21 +138,15 @@
 @endsection
 
 @section('script')
-<script>
-    $(document).ready(function() {
-        function openConfirmModal(userId) {
-            $('#confirmModal').modal('show');
-            $('#confirmButton').data('user-id', userId);
-            $('#confirmButton').on('click', function() {
-                var userId = $(this).data('user-id');
-                $(`#delete-user-form-${userId}`).submit();
+    <script>
+        $(document).ready(function() {
+            $('.btn-delete-user').on('click', function() {
+                const id = $(this).data('id');
+                $('#confirmModal').modal('show');
+                $('#confirmButton').on('click', function() {
+                    $(`#delete-form-${id}`).submit();
+                });
             });
-        }
-
-        $('.btn-delete-user').on('click', function() {
-            var userId = $(this).data('user');
-            openConfirmModal(userId);
         });
-    });
-</script>
+    </script>
 @endsection

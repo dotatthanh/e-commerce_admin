@@ -12,7 +12,9 @@
             },
             show: function show() {
                 $(this).slideDown();
-                $(".colorpicker-default").spectrum()
+                $('.select2-container').remove();
+                $('select').select2({ width: '100%' });
+                $(".select2-tag").select2({ tags: true })
             },
             hide: function hide(e) {
                 confirm("Bạn có chắc chắn muốn xóa phần tử này không?") && $(this).slideUp(e);
@@ -20,4 +22,5 @@
             ready: function ready(e) { }
         })
     });
-})();
+})()
+    ;
