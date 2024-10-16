@@ -18,15 +18,12 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::paginate(10);
-
-        if ($request->search) {
-            $roles = Role::where('name', 'like', '%'.$request->search.'%')->paginate(10);
-            $roles->appends(['search' => $request->search]);
-        }
+        $roles = Role::when($request->search, function ($query, $search) {
+            return $query->where('name', 'like', '%'.$search.'%');
+        })->paginate(10)->appends(['search' => $request->search]);
 
         $data = [
-            'roles' => $roles,
+            'data' => $roles,
         ];
 
         return view('admin.role.index', $data);
@@ -53,7 +50,7 @@ class RoleController extends Controller
         try {
             DB::beginTransaction();
 
-            $create = Role::create([
+            Role::create([
                 'name' => $request->name,
                 'guard_name' => 'admin',
             ]);
@@ -86,10 +83,8 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        $role = Role::findOrFail($id);
-
         $data = [
             'data_edit' => $role,
         ];
@@ -104,12 +99,12 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreRoleRequest $request, $id)
+    public function update(StoreRoleRequest $request, Role $role)
     {
         try {
             DB::beginTransaction();
 
-            $update = Role::findOrFail($id)->update([
+            $role->update([
                 'name' => $request->name,
             ]);
 
@@ -130,12 +125,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
         try {
             DB::beginTransaction();
-
-            $role = Role::findOrFail($id);
 
             if ($role->users->count() > 0) {
                 return redirect()->back()->with('alert-error', 'Xóa vai trò thất bại! Vai trò '.$role->name.' đang có tài khoản.');
@@ -143,7 +136,7 @@ class RoleController extends Controller
                 return redirect()->back()->with('alert-error', 'Xóa vai trò thất bại! Vai trò '.$role->name.' đang có quyền.');
             }
 
-            $role->destroy($id);
+            $role->delete();
             DB::commit();
 
             return redirect()->route('roles.index')->with('alert-success', 'Xóa vai trò thành công!');

@@ -15,9 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('import_order_id');
             $table->foreign('import_order_id')->references('id')->on('import_orders')->onDelete('cascade');
-            // $table->unsignedBigInteger('product_id');
-            // $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->unsignedBigInteger('product_variant_id')->nullable();
+            $table->unsignedBigInteger('product_variant_id');
             $table->foreign('product_variant_id')->references('id')->on('product_variants')->onDelete('cascade');
             $table->unsignedBigInteger('quantity');
             $table->unsignedBigInteger('price');

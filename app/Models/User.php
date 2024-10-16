@@ -13,6 +13,8 @@ class User extends Authenticatable
 {
     use HasFactory, HasRoles, Notifiable, SoftDeletes;
 
+    public $guard_name = 'admin';
+
     /**
      * The attributes that are mass assignable.
      *

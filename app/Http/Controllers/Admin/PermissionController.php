@@ -18,15 +18,12 @@ class PermissionController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::paginate(10);
-
-        if ($request->search) {
-            $roles = Role::where('name', 'like', '%'.$request->search.'%')->paginate(10);
-            $roles->appends(['search' => $request->search]);
-        }
+        $roles = Role::when($request->search, function ($query, $search) {
+            return $query->where('name', 'like', '%'.$search.'%');
+        })->paginate(10)->appends(['search' => $request->search]);
 
         $data = [
-            'roles' => $roles,
+            'data' => $roles,
         ];
 
         return view('admin.permission.index', $data);

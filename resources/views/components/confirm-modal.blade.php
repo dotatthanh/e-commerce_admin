@@ -11,7 +11,7 @@
                 <p class="text-muted font-size-16 mb-4">{{ $title }}</p>
 
                 <div class="hstack gap-2 justify-content-center mb-0">
-                    <button type="button" class="btn btn-danger" id="confirmButton" data-bs-dismiss="modal">Xóa</button>
+                    <button type="button" class="btn btn-danger" id="confirmButton" data-bs-dismiss="modal">{{ isset($btnName) ? $btnName : 'Xóa' }}</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
                 </div>
             </div>

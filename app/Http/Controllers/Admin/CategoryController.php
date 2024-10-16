@@ -16,11 +16,9 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Category::query();
-        if ($request->search) {
-            $data = $data->where('name', 'like', '%'.$request->search.'%');
-        }
-        $data = $data->paginate(10)->appends(['search' => $request->search]);
+        $data = Category::when($request->search, function ($query, $search) {
+            return $query->where('name', 'like', '%'.$search.'%');
+        })->paginate(10)->appends(['search' => $request->search]);
 
         $data = [
             'data' => $data,

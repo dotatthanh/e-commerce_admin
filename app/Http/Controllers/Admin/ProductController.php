@@ -25,11 +25,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Product::query();
-        if ($request->search) {
-            $data = $data->where('name', 'like', '%'.$request->search.'%');
-        }
-        $data = $data->paginate(10)->appends(['search' => $request->search]);
+        $data = Product::when($request->search, function ($query, $search) {
+            return $query->where('name', 'like', '%'.$search.'%');
+        })->paginate(10)->appends(['search' => $request->search]);
 
         $data = [
             'data' => $data,
@@ -217,6 +215,14 @@ class ProductController extends Controller
     public function getVariants($id)
     {
         $data = ProductVariant::with('variant')->select('id', 'product_id', 'variant_id', 'quantity')->where('product_id', $id)->get();
+
+        return $this->responseSuccess(Response::HTTP_OK, $data);
+    }
+
+    public function getProductsBySupplierId($id)
+    {
+        $data = Product::select('id', 'name')->where('supplier_id', $id)->get();
+
         return $this->responseSuccess(Response::HTTP_OK, $data);
     }
 }

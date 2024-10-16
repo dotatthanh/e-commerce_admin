@@ -18,11 +18,9 @@ class DiscountCodeController extends Controller
      */
     public function index(Request $request)
     {
-        $data = DiscountCode::query();
-        if ($request->search) {
-            // $data = $data->where('name', 'like', '%'. $request->search .'%');
-        }
-        $data = $data->paginate(10)->appends(['search' => $request->search]);
+        $data = DiscountCode::when($request->search, function ($query, $search) {
+            return $query->where('code', 'like', '%'.$search.'%');
+        })->paginate(10)->appends(['search' => $request->search]);
 
         $data = [
             'data' => $data,

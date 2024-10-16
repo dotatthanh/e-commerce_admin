@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreImportOrderRequest;
 use App\Models\ImportOrder;
+use App\Models\ImportOrderDetail;
+use App\Models\ProductVariant;
+use App\Models\Supplier;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Models\Supplier;
-use App\Models\Product;
 
 class ImportOrderController extends Controller
 {
@@ -17,16 +20,14 @@ class ImportOrderController extends Controller
      */
     public function index(Request $request)
     {
-        $data = ImportOrder::paginate(10);
-
-        if ($request->code) {
-            $data = ImportOrder::where('code', $request->code)->paginate(10);
-        }
+        $data = ImportOrder::when($request->search, function ($query, $search) {
+            return $query->where('code', 'like', '%'.$search.'%');
+        })->paginate(10)->appends(['search' => $request->search]);
 
         $data = [
             'data' => $data,
             'request' => $request,
-        ]; 
+        ];
 
         return view('admin.import-order.index', $data);
     }
@@ -36,16 +37,11 @@ class ImportOrderController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
         $suppliers = Supplier::all();
 
         $data = [
-            'products' => $products,
             'suppliers' => $suppliers,
-            // 'authors' => Author::all(),
-            // 'types' => Type::all(),
-            // 'categories' => Category::all(),
-        ]; 
+        ];
 
         return view('admin.import-order.create', $data);
     }
@@ -53,67 +49,75 @@ class ImportOrderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreImportOrderRequest $request)
     {
-        dd($request->all());
         DB::beginTransaction();
         try {
             // tạo đơn nhập hàng
-            $import_order = ImportOrder::create([
-                'code' => 'PN',
+            $importOrder = ImportOrder::create([
                 'user_id' => Auth::id(),
                 'supplier_id' => $request->supplier_id,
-                'total_money' => 0,
             ]);
 
-            $import_order->update([
-                'code' => 'PN'.str_pad($import_order->id, 6, '0', STR_PAD_LEFT)
+            $importOrder->update([
+                'code' => 'PNH'.str_pad($importOrder->id, 6, '0', STR_PAD_LEFT),
             ]);
 
             $total_money = 0;
             // tạo chi tiết đơn nhập hàng
-            foreach ($request->book_id as $key => $book_id) {
-                ImportOrderDetail::create([
-                    'import_order_id' => $import_order->id,
-                    'book_id' => $book_id,
-                    'amount' => $request->amount[$key],
-                    'price' => $request->price[$key],
+            foreach ($request->import_orders as $item) {
+                $importOrderDetail = ImportOrderDetail::create([
+                    'import_order_id' => $importOrder->id,
+                    'product_variant_id' => $item['product_variant_id'],
+                    'quantity' => $item['quantity'],
+                    'price' => $item['price'],
                 ]);
 
-                $book = Product::findOrFail($book_id);
-                $book->update([
-                    'amount' => $book->amount + $request->amount[$key],
+                $variant = $importOrderDetail->productVariant;
+                $productVariant = ProductVariant::where([
+                    'product_id' => $variant->product_id,
+                    'variant_id' => $variant->variant_id,
+                ])->first();
+
+                $productVariant->update([
+                    'quantity' => $productVariant->quantity + $item['quantity'],
                 ]);
 
-                $total = $request->amount[$key] * $request->price[$key];
-                $total_money += $total;
+                $total_money += $item['quantity'] * $item['price'];
             }
 
-            $import_order->update([
-                'total_money' => $total_money
+            $importOrder->update([
+                'total_money' => $total_money,
             ]);
 
             DB::commit();
-            return redirect()->route('warehouses.index')->with('alert-success', 'Nhập hàng thành công!');
+
+            return redirect()->route('import-orders.index')->with('alert-success', 'Tạo đơn nhập hàng thành công!');
         } catch (Exception $e) {
             DB::rollBack();
-            throw new Exception($e->getMessage());
-            return redirect()->back()->with('alert-error', 'Nhập hàng thất bại!');
+
+            return redirect()->back()->with('alert-error', 'Tạo đơn nhập hàng thất bại!');
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Request $request, ImportOrder $importOrder)
     {
-        $import_order_details = ImportOrderDetail::where('import_order_id', $id)->paginate(10);
+        $data = $importOrder->importOrderDetails()->with('productVariant.product')
+            ->when($request->search, function ($query, $search) {
+                $query->whereHas('productVariant.product', function ($subQuery) use ($search) {
+                    $subQuery->where('name', 'like', '%'.$search.'%');
+                });
+            })->paginate(10)->appends(['search' => $request->search]);
 
         $data = [
-            'import_order_details' => $import_order_details
+            'data' => $data,
+            'importOrder' => $importOrder,
         ];
 
-        return view('admin.import-order.import_order_detail', $data);
+        return view('admin.import-order.detail', $data);
     }
 
     /**

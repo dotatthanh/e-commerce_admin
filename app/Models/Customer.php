@@ -8,6 +8,8 @@ class Customer extends Authenticatable
 {
     protected $table = 'customers';
 
+    public $guard_name = 'web';
+
     protected $fillable = [
         'name',
         'email',

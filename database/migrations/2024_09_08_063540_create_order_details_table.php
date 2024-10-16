@@ -15,13 +15,11 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->unsignedBigInteger('product_variant_id')->nullable();
+            $table->unsignedBigInteger('product_variant_id');
             $table->foreign('product_variant_id')->references('id')->on('product_variants')->onDelete('cascade');
             $table->unsignedBigInteger('price');
             $table->unsignedBigInteger('sale');
-            $table->unsignedBigInteger('amount');
+            $table->unsignedBigInteger('quantity');
             $table->unsignedBigInteger('total_money');
             $table->timestamps();
             $table->softDeletes();

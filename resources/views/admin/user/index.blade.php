@@ -104,7 +104,7 @@
                                             {{-- @endcan --}}
 
                                             {{-- @can('Xóa nhân viên') --}}
-                                            @if (auth()->id() != $item->id)
+                                            @if (auth()->guard('admin')->id() != $item->id)
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xóa nhân viên">
                                                 <form id="delete-form-{{ $item->id }}" method="post" action="{{ route('users.destroy', $item->id) }}">
                                                     @csrf

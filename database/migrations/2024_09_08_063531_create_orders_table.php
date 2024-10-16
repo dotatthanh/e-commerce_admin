@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-            $table->unsignedBigInteger('status');
-            $table->unsignedBigInteger('payment_method');
             $table->unsignedBigInteger('total_money');
             $table->unsignedBigInteger('discount');
+            $table->unsignedBigInteger('discount_code_id')->nullable();
+            $table->foreign('discount_code_id')->references('id')->on('discount_codes')->onDelete('cascade');
+            $table->string('payment_method');
+            $table->string('status');
             $table->timestamps();
             $table->softDeletes();
         });

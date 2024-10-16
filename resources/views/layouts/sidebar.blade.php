@@ -28,7 +28,7 @@
                         <span key="t-user">Danh mục sản phẩm</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="{{ route('products.index') }}" class="waves-effect">
                         <i class="bx bx-user-circle"></i>
@@ -44,14 +44,51 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('orders.index') }}" class="waves-effect">
+                        <i class="bx bx-user-circle"></i>
+                        <span key="t-user">Đơn hàng</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="{{ route('warehouses.index') }}" class="waves-effect">
+                        <i class="bx bx-user-circle"></i>
+                        <span key="t-user">Kho hàng</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('discount-codes.index') }}" class="waves-effect">
                         <i class="bx bx-user-circle"></i>
                         <span key="t-user">Mã giảm giá</span>
                     </a>
                 </li>
 
+                <li class="menu-title" key="t-menu">Thống kê</li>
+                <li>
+                    <a href="{{ route('reports.index') }}" class="waves-effect">
+                        <i class="bx bx-user-circle"></i>
+                        <span key="t-user">Doanh thu</span>
+                    </a>
+                </li>
 
-
+                <li class="menu-title" key="t-menu">Hệ thống</li>
+                {{-- @can(['Xem danh sách vai trò', 'Xem danh sách quyền']) --}}
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-cog"></i>
+                        <span>Cài đặt</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        {{-- @can('Xem danh sách vai trò') --}}
+                        <li><a href="{{ route('roles.index') }}">Vai trò</a></li>
+                        {{-- @endcan --}}
+                        {{-- @can('Xem danh sách quyền') --}}
+                        <li><a href="{{ route('permissions.index') }}">Quyền</a></li>
+                        {{-- @endcan --}}
+                    </ul>
+                </li>
+                {{-- @endcan --}}
 
                 {{-- Template --}}
                 {{-- <li class="menu-title" key="t-menu">@lang('translation.Menu')</li>

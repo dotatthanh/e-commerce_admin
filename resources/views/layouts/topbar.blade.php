@@ -168,7 +168,7 @@
 
     <div class="d-flex">
 
-        <div class="dropdown d-inline-block d-lg-none ms-2">
+        {{-- <div class="dropdown d-inline-block d-lg-none ms-2">
             <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="mdi mdi-magnify"></i>
@@ -379,12 +379,12 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="dropdown d-inline-block">
             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg') }}"
+                <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/user.jpg') }}"
                     alt="Header Avatar">
                 <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->name)}}</span>
                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
@@ -392,7 +392,7 @@
             <div class="dropdown-menu dropdown-menu-end">
                 <!-- item-->
                 <a class="dropdown-item" href="contacts-profile"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Thông tin cá nhân</span></a>
-                <a class="dropdown-item d-block" href="{{ route('users.view-change-password', auth()->id()) }}"><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Đổi mật khẩu</span></a>
+                <a class="dropdown-item d-block" href="{{ route('users.view-change-password', auth()->guard('admin')->id()) }}"><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Đổi mật khẩu</span></a>
                 {{-- <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">@lang('translation.My_Wallet')</span></a>
                 <a class="dropdown-item d-block" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">@lang('translation.Settings')</span></a>
                 <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">@lang('translation.Lock_screen')</span></a> --}}
@@ -404,11 +404,11 @@
             </div>
         </div>
 
-        <div class="dropdown d-inline-block">
+        {{-- <div class="dropdown d-inline-block">
             <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
                 <i class="bx bx-cog bx-spin"></i>
             </button>
-        </div>
+        </div> --}}
 
     </div>
 </div>

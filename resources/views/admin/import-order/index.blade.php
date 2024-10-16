@@ -31,7 +31,7 @@
                 <form method="GET" action="{{ route('import-orders.index') }}" class="card-body border-bottom">
                     <div class="row g-3">
                         <div class="col-xxl-4 col-lg-6">
-                            <input type="search" name="search" class="form-control" id="search" placeholder="Nhập tên đơn nhập hàng" value="{{ request()->search }}">
+                            <input type="search" name="search" class="form-control" id="search" placeholder="Nhập mã đơn nhập hàng" value="{{ request()->search }}">
                         </div>
                         <div class="col-xxl-2 col-lg-4">
                             <button type="submit" class="btn bg-secondary bg-soft text-secondary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
@@ -54,16 +54,16 @@
                         <tbody>
                             @php ($stt = 1)
                             @foreach ($data as $item)
-                            {{-- <tr>
+                            <tr>
                                 <td class="text-center">{{ $stt++ }}</td>
-                                <td class="text-center">
-                                    <a href="{{ route('warehouses.show', $item->id) }}" class="text-primary">{{ $item->code }}</a>
+                                <td>
+                                    <a href="{{ route('import-orders.show', $item->id) }}" class="text-primary">{{ $item->code }}</a>
                                 </td>
                                 <td>{{ $item->supplier->name }}</td>
-                                <td class="text-center">{{ number_format($item->total_money) }}</td>
+                                <td>{{ number_format($item->total_money) }}</td>
                                 <td>{{ $item->user->name }}</td>
-                                <td class="text-center">{{ date_format($item->created_at, 'd/m/Y') }}</td>
-                            </tr> --}}
+                                <td>{{ date_format($item->created_at, 'd/m/Y') }}</td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -78,19 +78,4 @@
         </div>
     </div>
 
-    @include('components.confirm-modal', ['title' => 'Xác nhận xóa đơn nhập hàng'])
-@endsection
-
-@section('script')
-    <script>
-        $(document).ready(function() {
-            $('.btn-delete-user').on('click', function() {
-                const id = $(this).data('id');
-                $('#confirmModal').modal('show');
-                $('#confirmButton').on('click', function() {
-                    $(`#delete-form-${id}`).submit();
-                });
-            });
-        });
-    </script>
 @endsection

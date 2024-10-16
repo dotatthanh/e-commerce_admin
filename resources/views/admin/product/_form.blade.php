@@ -128,10 +128,9 @@
                                 {!! $errors->first('variants.*.color_code', '<span class="error d-block mt-2">:message</span>') !!}
                             </div>
 
-                            <div class="col-lg-2 col-sm-2 mb-3 align-self-end">
-                                <div class="d-grid">
-                                    <input data-repeater-delete type="button" class="btn btn-danger" value="Xóa" />
-                                </div>
+                            <div class="col-lg-2 col-sm-2 mb-3">
+                                <label>&nbsp;</label>
+                                <input data-repeater-delete type="button" class="btn btn-danger d-block" value="Xóa" />
                             </div>
                         </div>
                     @endforeach
@@ -152,10 +151,9 @@
                             <input type="text" name="color_code" class="form-control colorpicker-default" placeholder="Chọn mã màu">
                         </div>
 
-                        <div class="col-lg-2 col-sm-2 mb-3 align-self-end">
-                            <div class="d-grid">
-                                <input data-repeater-delete type="button" class="btn btn-danger" value="Xóa" />
-                            </div>
+                        <div class="col-lg-2 col-sm-2 mb-3">
+                            <label>&nbsp;</label>
+                            <input data-repeater-delete type="button" class="btn btn-danger d-block" value="Xóa" />
                         </div>
                     </div>
                 @endif
