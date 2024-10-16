@@ -31,7 +31,7 @@
                             <input type="date" name="to_date" class="form-control" value="{{ request()->to_date }}">
                         </div>
                         <div class="col-xxl-2 col-sm-3">
-                            <button type="submit" class="btn bg-secondary bg-soft text-secondary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
+                            <button type="submit" class="btn btn-primary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
                         </div>
                     </div>
                 </form>

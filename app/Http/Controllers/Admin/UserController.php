@@ -116,7 +116,7 @@ class UserController extends Controller
             'roles' => $roles,
         ];
 
-        return view('admin.user.profile', $data);
+        return view('admin.user.show', $data);
     }
 
     /**
@@ -233,5 +233,17 @@ class UserController extends Controller
 
             return redirect()->back()->with('alert-error', 'Đổi mật khẩu thất bại!');
         }
+    }
+
+    public function profile()
+    {
+        $roles = Role::all();
+
+        $data = [
+            'user' => auth()->guard('admin')->user(),
+            'roles' => $roles,
+        ];
+
+        return view('admin.user.profile', $data);
     }
 }

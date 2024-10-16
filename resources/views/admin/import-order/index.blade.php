@@ -19,12 +19,12 @@
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center justify-content-between">
                         <h4 class="card-title">Danh sách đơn nhập hàng</h4>
-                        {{-- @can('Thêm đơn nhập hàng') --}}
+                        @can('Thêm đơn nhập hàng')
                             <div class="flex-shrink-0">
                                 <a href="{{ route('import-orders.create') }}" class="btn btn-primary">Thêm đơn nhập hàng</a>
                                 <a href="{{ route('import-orders.index') }}" class="btn btn-light"><i class="mdi mdi-refresh"></i></a>
                             </div>
-                        {{-- @endcan --}}
+                        @endcan
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                             <input type="search" name="search" class="form-control" id="search" placeholder="Nhập mã đơn nhập hàng" value="{{ request()->search }}">
                         </div>
                         <div class="col-xxl-2 col-lg-4">
-                            <button type="submit" class="btn bg-secondary bg-soft text-secondary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
+                            <button type="submit" class="btn btn-primary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
                         </div>
                     </div>
                 </form>
@@ -57,7 +57,11 @@
                             <tr>
                                 <td class="text-center">{{ $stt++ }}</td>
                                 <td>
-                                    <a href="{{ route('import-orders.show', $item->id) }}" class="text-primary">{{ $item->code }}</a>
+                                    @can('Chi tiết đơn nhập hàng')
+                                        <a href="{{ route('import-orders.show', $item->id) }}" class="text-primary">{{ $item->code }}</a>
+                                    @else
+                                        {{ $item->code }}
+                                    @endcan
                                 </td>
                                 <td>{{ $item->supplier->name }}</td>
                                 <td>{{ number_format($item->total_money) }}</td>

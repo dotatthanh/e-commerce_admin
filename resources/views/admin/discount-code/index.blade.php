@@ -19,12 +19,12 @@
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center justify-content-between">
                         <h4 class="card-title">Danh sách mã giảm giá</h4>
-                        {{-- @can('Thêm mã giảm giá') --}}
+                        @can('Thêm mã giảm giá')
                             <div class="flex-shrink-0">
                                 <a href="{{ route('discount-codes.create') }}" class="btn btn-primary">Thêm mã giảm giá</a>
                                 <a href="{{ route('discount-codes.index') }}" class="btn btn-light"><i class="mdi mdi-refresh"></i></a>
                             </div>
-                        {{-- @endcan --}}
+                        @endcan
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                             <input type="search" name="search" class="form-control" id="search" placeholder="Nhập họ và tên" value="{{ request()->search }}">
                         </div>
                         <div class="col-xxl-2 col-lg-4">
-                            <button type="submit" class="btn bg-secondary bg-soft text-secondary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
+                            <button type="submit" class="btn btn-primary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
                         </div>
                     </div>
                 </form>
@@ -68,15 +68,15 @@
                                     <td>{{ getConst('isShow')[$item->active] }}</td>
                                     <td class="text-center">
                                         <ul class="list-unstyled hstack gap-1 mb-0">
-                                            {{-- @can('Chỉnh sửa mã giảm giá') --}}
+                                            @can('Chỉnh sửa mã giảm giá')
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Chỉnh sửa mã giảm giá">
                                                 <a href="{{ route('discount-codes.edit', $item->id) }}" class="btn btn-sm bg-info text-info bg-soft">
                                                     <i class="mdi mdi-pencil-outline"></i>
                                                 </a>
                                             </li>
-                                            {{-- @endcan --}}
+                                            @endcan
 
-                                            {{-- @can('Xóa mã giảm giá') --}}
+                                            @can('Xóa mã giảm giá')
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xóa mã giảm giá">
                                                 <form id="delete-form-{{ $item->id }}" method="post" action="{{ route('discount-codes.destroy', $item->id) }}">
                                                     @csrf
@@ -86,7 +86,7 @@
                                                     </button>
                                                 </form>
                                             </li>
-                                            {{-- @endcan --}}
+                                            @endcan
                                         </ul>
                                     </td>
                                 </tr>

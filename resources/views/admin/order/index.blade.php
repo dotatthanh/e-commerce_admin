@@ -19,12 +19,12 @@
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center justify-content-between">
                         <h4 class="card-title">Danh sách đơn hàng</h4>
-                        {{-- @can('Thêm đơn hàng') --}}
+                        @can('Thêm đơn hàng')
                             <div class="flex-shrink-0">
                                 <a href="{{ route('import-orders.create') }}" class="btn btn-primary">Thêm đơn hàng</a>
                                 <a href="{{ route('import-orders.index') }}" class="btn btn-light"><i class="mdi mdi-refresh"></i></a>
                             </div>
-                        {{-- @endcan --}}
+                        @endcan
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                             <input type="search" name="search" class="form-control" id="search" placeholder="Nhập mã đơn hàng" value="{{ request()->search }}">
                         </div>
                         <div class="col-xxl-2 col-lg-4">
-                            <button type="submit" class="btn bg-secondary bg-soft text-secondary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
+                            <button type="submit" class="btn btn-primary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
                         </div>
                     </div>
                 </form>
@@ -68,7 +68,7 @@
                                 <td>{{ $item->status }}</td>
                                 <td class="text-center">
                                     <ul class="list-unstyled hstack gap-1 mb-0">
-                                        {{-- @can('Cập nhật trạng thái đơn hàng') --}}
+                                        @can('Cập nhật trạng thái đơn hàng')
                                         <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cập nhật trạng thái đơn hàng">
                                             <form method="post" action="{{ route('orders.update-status-order', $item->id) }}">
                                                 @csrf
@@ -80,8 +80,8 @@
                                                 @include('admin.order.edit-status-modal')
                                             </form>
                                         </li>
-                                        {{-- @endcan --}}
-                                        {{-- @can('Hủy đơn hàng') --}}
+                                        @endcan
+                                        @can('Hủy đơn hàng')
                                         @if ($item->canBeCanceled())
                                         <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Hủy đơn hàng">
                                             <form id="cancel-form-{{ $item->id }}" method="post" action="{{ route('orders.cancel-order', $item->id) }}">
@@ -93,7 +93,7 @@
                                             </form>
                                         </li>
                                         @endif
-                                        {{-- @endcan --}}
+                                        @endcan
                                     </ul>
                                 </td>
                             </tr>

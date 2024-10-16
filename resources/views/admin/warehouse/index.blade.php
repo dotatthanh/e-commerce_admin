@@ -28,7 +28,7 @@
                             <input type="search" name="search" class="form-control" id="search" placeholder="Nhập tên sản phẩm" value="{{ request()->search }}">
                         </div>
                         <div class="col-xxl-2 col-lg-4">
-                            <button type="submit" class="btn bg-secondary bg-soft text-secondary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
+                            <button type="submit" class="btn btn-primary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
                         </div>
                     </div>
                 </form>

@@ -28,7 +28,7 @@
                             <input type="search" name="search" class="form-control" id="search" placeholder="Nhập tên vai trò" value="{{ request()->search }}">
                         </div>
                         <div class="col-xxl-2 col-lg-4">
-                            <button type="submit" class="btn bg-secondary bg-soft text-secondary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
+                            <button type="submit" class="btn btn-primary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
                         </div>
                     </div>
                 </form>
@@ -51,17 +51,17 @@
                                     <td class="text-center">
                                         @if ($role->id != 1)
                                         <ul class="list-inline font-size-20 contact-links mb-0">
-                                            {{-- @can('Xem quyền') --}}
+                                            @can('Xem quyền')
                                             <li class="list-inline-item px">
                                                 <a href="{{ route('permissions.show', $role->id) }}" data-toggle="tooltip" data-placement="top" title="Xem"><i class="fa fa-eye text-success"></i></a>
                                             </li>
-                                            {{-- @endcan --}}
+                                            @endcan
 
-                                            {{-- @can('Chỉnh sửa quyền') --}}
+                                            @can('Chỉnh sửa quyền')
                                             <li class="list-inline-item px">
                                                 <a href="{{ route('permissions.edit', $role->id) }}" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="mdi mdi-pencil text-success"></i></a>
                                             </li>
-                                            {{-- @endcan --}}
+                                            @endcan
                                         </ul>
                                         @endif
                                     </td>

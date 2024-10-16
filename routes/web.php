@@ -23,9 +23,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
     Route::post('/products/upload-image-details', [ProductController::class, 'uploadImageDetails'])->name('products.upload-image-details');
@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class);
     Route::get('/users/view-change-password/{user}', [UserController::class, 'viewChangePassword'])->name('users.view-change-password');
     Route::post('/users/change-password/{user}', [UserController::class, 'changePassword'])->name('users.change-password');
+    Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
 
     Route::resource('warehouses', WarehouseController::class);
 

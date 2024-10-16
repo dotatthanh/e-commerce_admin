@@ -19,12 +19,12 @@
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center justify-content-between">
                         <h4 class="card-title">Danh sách vai trò</h4>
-                        {{-- @can('Thêm vai trò') --}}
+                        @can('Thêm vai trò')
                             <div class="flex-shrink-0">
                                 <a href="{{ route('roles.create') }}" class="btn btn-primary">Thêm vai trò</a>
                                 <a href="{{ route('roles.index') }}" class="btn btn-light"><i class="mdi mdi-refresh"></i></a>
                             </div>
-                        {{-- @endcan --}}
+                        @endcan
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                             <input type="search" name="search" class="form-control" id="search" placeholder="Nhập tên vai trò" value="{{ request()->search }}">
                         </div>
                         <div class="col-xxl-2 col-lg-4">
-                            <button type="submit" class="btn bg-secondary bg-soft text-secondary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
+                            <button type="submit" class="btn btn-primary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
                         </div>
                     </div>
                 </form>
@@ -57,13 +57,13 @@
                                     <td class="text-center">
                                         @if ($role->id > 1)
                                             <ul class="list-inline font-size-20 contact-links mb-0">
-                                                {{-- @can('Chỉnh sửa vai trò') --}}
+                                                @can('Chỉnh sửa vai trò')
                                                 <li class="list-inline-item px">
                                                     <a href="{{ route('roles.edit', $role->id) }}" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="mdi mdi-pencil text-success"></i></a>
                                                 </li>
-                                                {{-- @endcan --}}
+                                                @endcan
 
-                                                {{-- @can('Xóa vai trò') --}}
+                                                @can('Xóa vai trò')
                                                 <li class="list-inline-item px">
                                                     <form method="post" action="{{ route('roles.destroy', $role->id) }}">
                                                         @csrf
@@ -72,7 +72,7 @@
                                                         <button type="submit" data-toggle="tooltip" data-placement="top" title="Xóa" class="border-0 bg-white"><i class="mdi mdi-trash-can text-danger"></i></button>
                                                     </form>
                                                 </li>
-                                                {{-- @endcan --}}
+                                                @endcan
                                             </ul>
                                         @endif
                                     </td>

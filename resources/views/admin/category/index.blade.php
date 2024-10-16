@@ -19,12 +19,12 @@
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center justify-content-between">
                         <h4 class="card-title">Danh sách danh mục sản phẩm</h4>
-                        {{-- @can('Thêm danh mục sản phẩm') --}}
+                        @can('Thêm danh mục sản phẩm')
                             <div class="flex-shrink-0">
                                 <a href="{{ route('categories.create') }}" class="btn btn-primary">Thêm danh mục sản phẩm</a>
                                 <a href="{{ route('categories.index') }}" class="btn btn-light"><i class="mdi mdi-refresh"></i></a>
                             </div>
-                        {{-- @endcan --}}
+                        @endcan
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                             <input type="search" name="search" class="form-control" id="search" placeholder="Nhập tên danh mục sản phẩm" value="{{ request()->search }}">
                         </div>
                         <div class="col-xxl-2 col-lg-4">
-                            <button type="submit" class="btn bg-secondary bg-soft text-secondary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
+                            <button type="submit" class="btn btn-primary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
                         </div>
                     </div>
                 </form>
@@ -60,15 +60,15 @@
                                     <td>{{ $item->sort }}</td>
                                     <td class="text-center">
                                         <ul class="list-unstyled hstack gap-1 mb-0">
-                                            {{-- @can('Chỉnh sửa danh mục sản phẩm') --}}
+                                            @can('Chỉnh sửa danh mục sản phẩm')
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Chỉnh sửa danh mục sản phẩm">
                                                 <a href="{{ route('categories.edit', $item->id) }}" class="btn btn-sm bg-info text-info bg-soft">
                                                     <i class="mdi mdi-pencil-outline"></i>
                                                 </a>
                                             </li>
-                                            {{-- @endcan --}}
+                                            @endcan
 
-                                            {{-- @can('Xóa danh mục sản phẩm') --}}
+                                            @can('Xóa danh mục sản phẩm')
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xóa danh mục sản phẩm">
                                                 <form id="delete-form-{{ $item->id }}" method="post" action="{{ route('categories.destroy', $item->id) }}">
                                                     @csrf
@@ -78,7 +78,7 @@
                                                     </button>
                                                 </form>
                                             </li>
-                                            {{-- @endcan --}}
+                                            @endcan
                                         </ul>
                                     </td>
                                 </tr>

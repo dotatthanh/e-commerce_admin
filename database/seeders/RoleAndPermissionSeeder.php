@@ -17,17 +17,19 @@ class RoleAndPermissionSeeder extends Seeder
     public function run()
     {
         // Thêm vai trò
-        $super_admin = Role::create(['name' => 'Admin']);
+        $super_admin = Role::create(['name' => 'Admin', 'guard_name' => 'admin']);
 
         // Gán vai trò
         User::find(1)->assignRole('Admin');
 
-        $view_user = Permission::create(['name' => 'Xem danh sách tài khoản']);
-        $create_user = Permission::create(['name' => 'Thêm tài khoản']);
-        $edit_user = Permission::create(['name' => 'Chỉnh sửa tài khoản']);
-        $delete_user = Permission::create(['name' => 'Xóa tài khoản']);
+        $view_user = Permission::create(['name' => 'Xem danh sách nhân viên']);
+        $detail_user = Permission::create(['name' => 'Xem thông tin nhân viên']);
+        $create_user = Permission::create(['name' => 'Thêm nhân viên']);
+        $edit_user = Permission::create(['name' => 'Chỉnh sửa nhân viên']);
+        $delete_user = Permission::create(['name' => 'Xóa nhân viên']);
 
         $super_admin->givePermissionTo($view_user);
+        $super_admin->givePermissionTo($detail_user);
         $super_admin->givePermissionTo($create_user);
         $super_admin->givePermissionTo($edit_user);
         $super_admin->givePermissionTo($delete_user);
@@ -50,70 +52,70 @@ class RoleAndPermissionSeeder extends Seeder
         $super_admin->givePermissionTo($view_permission_detail);
         $super_admin->givePermissionTo($edit_permission);
 
-        $view_department = Permission::create(['name' => 'Xem danh sách khoa']);
-        $create_department = Permission::create(['name' => 'Thêm khoa']);
-        $edit_department = Permission::create(['name' => 'Chỉnh sửa khoa']);
-        $delete_department = Permission::create(['name' => 'Xóa khoa']);
+        $view_supplier = Permission::create(['name' => 'Xem danh sách nhà cung cấp']);
+        $create_supplier = Permission::create(['name' => 'Thêm nhà cung cấp']);
+        $edit_supplier = Permission::create(['name' => 'Chỉnh sửa nhà cung cấp']);
+        $delete_supplier = Permission::create(['name' => 'Xóa nhà cung cấp']);
 
-        $super_admin->givePermissionTo($view_department);
-        $super_admin->givePermissionTo($create_department);
-        $super_admin->givePermissionTo($edit_department);
-        $super_admin->givePermissionTo($delete_department);
+        $super_admin->givePermissionTo($view_supplier);
+        $super_admin->givePermissionTo($create_supplier);
+        $super_admin->givePermissionTo($edit_supplier);
+        $super_admin->givePermissionTo($delete_supplier);
 
-        $view_major = Permission::create(['name' => 'Xem danh sách chuyên ngành']);
-        $create_major = Permission::create(['name' => 'Thêm chuyên ngành']);
-        $edit_major = Permission::create(['name' => 'Chỉnh sửa chuyên ngành']);
-        $delete_major = Permission::create(['name' => 'Xóa chuyên ngành']);
+        $view_category = Permission::create(['name' => 'Xem danh sách danh mục sản phẩm']);
+        $create_category = Permission::create(['name' => 'Thêm danh mục sản phẩm']);
+        $edit_category = Permission::create(['name' => 'Chỉnh sửa danh mục sản phẩm']);
+        $delete_category = Permission::create(['name' => 'Xóa danh mục sản phẩm']);
 
-        $super_admin->givePermissionTo($view_major);
-        $super_admin->givePermissionTo($create_major);
-        $super_admin->givePermissionTo($edit_major);
-        $super_admin->givePermissionTo($delete_major);
+        $super_admin->givePermissionTo($view_category);
+        $super_admin->givePermissionTo($create_category);
+        $super_admin->givePermissionTo($edit_category);
+        $super_admin->givePermissionTo($delete_category);
 
-        $view_class = Permission::create(['name' => 'Xem danh sách lớp học']);
-        $create_class = Permission::create(['name' => 'Thêm lớp học']);
-        $edit_class = Permission::create(['name' => 'Chỉnh sửa lớp học']);
-        $delete_class = Permission::create(['name' => 'Xóa lớp học']);
+        $view_product = Permission::create(['name' => 'Xem danh sách sản phẩm']);
+        $create_product = Permission::create(['name' => 'Thêm sản phẩm']);
+        $edit_product = Permission::create(['name' => 'Chỉnh sửa sản phẩm']);
+        $delete_product = Permission::create(['name' => 'Xóa sản phẩm']);
 
-        $super_admin->givePermissionTo($view_class);
-        $super_admin->givePermissionTo($create_class);
-        $super_admin->givePermissionTo($edit_class);
-        $super_admin->givePermissionTo($delete_class);
+        $super_admin->givePermissionTo($view_product);
+        $super_admin->givePermissionTo($create_product);
+        $super_admin->givePermissionTo($edit_product);
+        $super_admin->givePermissionTo($delete_product);
 
-        $view_course = Permission::create(['name' => 'Xem danh sách học phần']);
-        $create_course = Permission::create(['name' => 'Thêm học phần']);
-        $edit_course = Permission::create(['name' => 'Chỉnh sửa học phần']);
-        $delete_course = Permission::create(['name' => 'Xóa học phần']);
+        $view_import_order = Permission::create(['name' => 'Xem danh sách đơn nhập hàng']);
+        $create_import_order = Permission::create(['name' => 'Thêm đơn nhập hàng']);
+        $detail_import_order = Permission::create(['name' => 'Chi tiết đơn nhập hàng']);
 
-        $super_admin->givePermissionTo($view_course);
-        $super_admin->givePermissionTo($create_course);
-        $super_admin->givePermissionTo($edit_course);
-        $super_admin->givePermissionTo($delete_course);
+        $super_admin->givePermissionTo($view_import_order);
+        $super_admin->givePermissionTo($create_import_order);
+        $super_admin->givePermissionTo($detail_import_order);
 
-        $view_qa = Permission::create(['name' => 'Xem danh sách câu hỏi và đáp án']);
-        $create_qa = Permission::create(['name' => 'Thêm câu hỏi và đáp án']);
-        $edit_qa = Permission::create(['name' => 'Chỉnh sửa câu hỏi và đáp án']);
-        $delete_qa = Permission::create(['name' => 'Xóa câu hỏi và đáp án']);
+        $view_order = Permission::create(['name' => 'Xem danh sách đơn hàng']);
+        $detail_order = Permission::create(['name' => 'Chi tiết đơn hàng']);
+        $update_status_order = Permission::create(['name' => 'Cập nhật trạng thái đơn hàng']);
+        $cancel_order = Permission::create(['name' => 'Hủy đơn hàng']);
 
-        $super_admin->givePermissionTo($view_qa);
-        $super_admin->givePermissionTo($create_qa);
-        $super_admin->givePermissionTo($edit_qa);
-        $super_admin->givePermissionTo($delete_qa);
+        $super_admin->givePermissionTo($view_order);
+        $super_admin->givePermissionTo($detail_order);
+        $super_admin->givePermissionTo($update_status_order);
+        $super_admin->givePermissionTo($cancel_order);
 
-        $view_room = Permission::create(['name' => 'Xem danh sách phòng thi']);
-        $create_room = Permission::create(['name' => 'Thêm phòng thi']);
-        $edit_room = Permission::create(['name' => 'Chỉnh sửa phòng thi']);
-        $delete_room = Permission::create(['name' => 'Xóa phòng thi']);
+        $view_warehouse = Permission::create(['name' => 'Xem danh sách kho hàng']);
 
-        $super_admin->givePermissionTo($view_room);
-        $super_admin->givePermissionTo($create_room);
-        $super_admin->givePermissionTo($edit_room);
-        $super_admin->givePermissionTo($delete_room);
+        $super_admin->givePermissionTo($view_warehouse);
 
-        $view_exam_result = Permission::create(['name' => 'Xem danh sách kết quả thi']);
-        $detail_exam_result = Permission::create(['name' => 'Chi tiết kết quả thi']);
+        $view_discount_code = Permission::create(['name' => 'Xem danh sách mã giảm giá']);
+        $create_discount_code = Permission::create(['name' => 'Thêm mã giảm giá']);
+        $edit_discount_code = Permission::create(['name' => 'Chỉnh sửa mã giảm giá']);
+        $delete_discount_code = Permission::create(['name' => 'Xóa mã giảm giá']);
 
-        $super_admin->givePermissionTo($view_exam_result);
-        $super_admin->givePermissionTo($detail_exam_result);
+        $super_admin->givePermissionTo($view_discount_code);
+        $super_admin->givePermissionTo($create_discount_code);
+        $super_admin->givePermissionTo($edit_discount_code);
+        $super_admin->givePermissionTo($delete_discount_code);
+
+        $view_revenue = Permission::create(['name' => 'Xem danh sách doanh thu']);
+
+        $super_admin->givePermissionTo($view_revenue);
     }
 }

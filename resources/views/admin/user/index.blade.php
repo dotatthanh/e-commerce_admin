@@ -19,12 +19,12 @@
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center justify-content-between">
                         <h4 class="card-title">Danh sách nhân viên</h4>
-                        {{-- @can('Thêm nhân viên') --}}
+                        @can('Thêm nhân viên')
                             <div class="flex-shrink-0">
                                 <a href="{{ route('users.create') }}" class="btn btn-primary">Thêm nhân viên</a>
                                 <a href="{{ route('users.index') }}" class="btn btn-light"><i class="mdi mdi-refresh"></i></a>
                             </div>
-                        {{-- @endcan --}}
+                        @endcan
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                             <input type="search" name="search" class="form-control" id="search" placeholder="Nhập họ và tên" value="{{ request()->search }}">
                         </div>
                         <div class="col-xxl-2 col-lg-4">
-                            <button type="submit" class="btn bg-secondary bg-soft text-secondary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
+                            <button type="submit" class="btn btn-primary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
                         </div>
                     </div>
                 </form>
@@ -87,23 +87,23 @@
                                     <td class="text-center">
                                         @if ($item->id != 1)
                                         <ul class="list-unstyled hstack gap-1 mb-0">
-                                            {{-- @can('Xem thông tin nhân viên') --}}
+                                            @can('Xem thông tin nhân viên')
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem thông tin nhân viên">
                                                 <a href="{{ route('users.show', ['user' => $item->id]) }}" class="btn btn-sm bg-primary text-primary bg-soft">
                                                     <i class="mdi mdi-eye-outline"></i>
                                                 </a>
                                             </li>
-                                            {{-- @endcan --}}
+                                            @endcan
 
-                                            {{-- @can('Chỉnh sửa nhân viên') --}}
+                                            @can('Chỉnh sửa nhân viên')
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Chỉnh sửa nhân viên">
                                                 <a href="{{ route('users.edit', $item->id) }}" class="btn btn-sm bg-info text-info bg-soft">
                                                     <i class="mdi mdi-pencil-outline"></i>
                                                 </a>
                                             </li>
-                                            {{-- @endcan --}}
+                                            @endcan
 
-                                            {{-- @can('Xóa nhân viên') --}}
+                                            @can('Xóa nhân viên')
                                             @if (auth()->guard('admin')->id() != $item->id)
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xóa nhân viên">
                                                 <form id="delete-form-{{ $item->id }}" method="post" action="{{ route('users.destroy', $item->id) }}">
@@ -115,7 +115,7 @@
                                                 </form>
                                             </li>
                                             @endif
-                                            {{-- @endcan --}}
+                                            @endcan
                                         </ul>
                                         @endif
                                     </td>

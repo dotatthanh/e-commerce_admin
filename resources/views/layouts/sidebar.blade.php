@@ -17,49 +17,49 @@
 
                 <li>
                     <a href="{{ route('suppliers.index') }}" class="waves-effect">
-                        <i class="bx bx-user-circle"></i>
+                        <i class="bx bx-building"></i>
                         <span key="t-user">Nhà cung cấp</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('categories.index') }}" class="waves-effect">
-                        <i class="bx bx-user-circle"></i>
+                        <i class="bx bx-list-ul"></i>
                         <span key="t-user">Danh mục sản phẩm</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('products.index') }}" class="waves-effect">
-                        <i class="bx bx-user-circle"></i>
+                        <i class="bx bxs-t-shirt"></i>
                         <span key="t-user">Sản phẩm</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('import-orders.index') }}" class="waves-effect">
-                        <i class="bx bx-user-circle"></i>
+                        <i class="bx bx-import"></i>
                         <span key="t-user">Đơn nhập hàng</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('orders.index') }}" class="waves-effect">
-                        <i class="bx bx-user-circle"></i>
+                        <i class="bx bx-receipt"></i>
                         <span key="t-user">Đơn hàng</span>
                     </a>
                 </li>
                 
                 <li>
                     <a href="{{ route('warehouses.index') }}" class="waves-effect">
-                        <i class="bx bx-user-circle"></i>
+                        <i class="bx bx bx-data"></i>
                         <span key="t-user">Kho hàng</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('discount-codes.index') }}" class="waves-effect">
-                        <i class="bx bx-user-circle"></i>
+                        <i class="bx bxs-discount"></i>
                         <span key="t-user">Mã giảm giá</span>
                     </a>
                 </li>
@@ -67,28 +67,28 @@
                 <li class="menu-title" key="t-menu">Thống kê</li>
                 <li>
                     <a href="{{ route('reports.index') }}" class="waves-effect">
-                        <i class="bx bx-user-circle"></i>
+                        <i class="bx bx-dollar-circle"></i>
                         <span key="t-user">Doanh thu</span>
                     </a>
                 </li>
 
                 <li class="menu-title" key="t-menu">Hệ thống</li>
-                {{-- @can(['Xem danh sách vai trò', 'Xem danh sách quyền']) --}}
+                @can(['Xem danh sách vai trò', 'Xem danh sách quyền'])
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-cog"></i>
                         <span>Cài đặt</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        {{-- @can('Xem danh sách vai trò') --}}
+                        @can('Xem danh sách vai trò')
                         <li><a href="{{ route('roles.index') }}">Vai trò</a></li>
-                        {{-- @endcan --}}
-                        {{-- @can('Xem danh sách quyền') --}}
+                        @endcan
+                        @can('Xem danh sách quyền')
                         <li><a href="{{ route('permissions.index') }}">Quyền</a></li>
-                        {{-- @endcan --}}
+                        @endcan
                     </ul>
                 </li>
-                {{-- @endcan --}}
+                @endcan
 
                 {{-- Template --}}
                 {{-- <li class="menu-title" key="t-menu">@lang('translation.Menu')</li>
