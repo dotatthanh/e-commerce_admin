@@ -24,8 +24,7 @@ class ChangePasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'password_old' => 'required|string|min:8|current_password:admin',
-            'password' => 'required|string|min:8', //|confirmed
+            'password' => 'required|string|min:8',
             'password_confirmation' => 'required|string|min:8|same:password',
         ];
     }
@@ -33,10 +32,6 @@ class ChangePasswordRequest extends FormRequest
     public function messages()
     {
         return [
-            // 'password_old.current_password' => 'Mật khẩu cũ không chính xác.',
-            // 'password_old.required' => 'Mật khẩu cũ là trường bắt buộc.',
-            // 'password_old.string' => 'Mật khẩu cũ không được chứa các ký tự đặc biệt.',
-            // 'password_old.min' => 'Mật khẩu cũ phải ít nhất 8 ký tự.',
             'password_confirmation.required' => 'Xác nhận mật khẩu là trường bắt buộc.',
             'password_confirmation.same' => 'Xác nhận mật khẩu không trùng với mật khẩu mới.',
             'password_confirmation.string' => 'Xác nhận mật khẩu không được chứa các ký tự đặc biệt.',

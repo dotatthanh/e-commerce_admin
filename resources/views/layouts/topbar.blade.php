@@ -399,7 +399,7 @@
                             class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Thông tin cá
                             nhân</span></a>
                     <a class="dropdown-item d-block"
-                        href="{{ route('users.view-change-password', auth()->guard('admin')->id()) }}"><i
+                        href="{{ route('users.change-password', auth()->guard('admin')->id()) }}"><i
                             class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Đổi mật
                             khẩu</span></a>
                     {{-- <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">@lang('translation.My_Wallet')</span></a>

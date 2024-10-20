@@ -21,7 +21,7 @@
                     <h4 class="card-title">Thông tin cơ bản</h4>
                     <p class="card-title-desc">Điền tất cả thông tin bên dưới</p>
 
-                    <form method="POST" action="{{ route('users.change-password', $user->id) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('users.update-password', $user->id) }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row justify-content-center mb-3">
                             <div class="col-sm-3">

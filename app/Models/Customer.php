@@ -6,19 +6,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Customer extends Authenticatable
 {
-    protected $table = 'customers';
-
     public $guard_name = 'web';
 
     protected $fillable = [
+        'code',
         'name',
         'email',
         'phone',
         'address',
         'password',
-        'code',
         'birthday',
-        'sex',
+        'gender',
     ];
 
     public function orders()

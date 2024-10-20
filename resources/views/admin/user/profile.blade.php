@@ -42,7 +42,7 @@
 
             <div class="card">
                 <div class="card-body text-center">
-                    <a href="{{ route('users.view-change-password', $user->id) }}" class="btn bg-danger text-danger bg-soft">
+                    <a href="{{ route('users.change-password', $user->id) }}" class="btn bg-danger text-danger bg-soft">
                         Đổi mật khẩu
                     </a>
                 </div>

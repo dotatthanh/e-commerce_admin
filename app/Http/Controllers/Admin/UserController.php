@@ -206,7 +206,7 @@ class UserController extends Controller
         }
     }
 
-    public function viewChangePassword(User $user)
+    public function changePassword(User $user)
     {
         $data = [
             'user' => $user,
@@ -215,24 +215,13 @@ class UserController extends Controller
         return view('admin.user.change-password', $data);
     }
 
-    public function changePassword(ChangePasswordRequest $request, User $user)
+    public function updatePassword(ChangePasswordRequest $request, User $user)
     {
-        try {
-            DB::beginTransaction();
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
 
-            $user->update([
-                'password' => Hash::make($request->password),
-            ]);
-
-            DB::commit();
-
-            return redirect()->back()->with('alert-success', 'Đổi mật khẩu thành công!');
-        } catch (Exception $e) {
-            DB::rollBack();
-            \Log::error($e);
-
-            return redirect()->back()->with('alert-error', 'Đổi mật khẩu thất bại!');
-        }
+        return redirect()->back()->with('alert-success', 'Đổi mật khẩu thành công!');
     }
 
     public function profile()

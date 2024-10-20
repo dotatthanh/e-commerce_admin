@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WarehouseController;
-use App\Http\Controllers\ProfileController;
+// use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -40,8 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('discount-codes', DiscountCodeController::class);
 
     Route::resource('users', UserController::class);
-    Route::get('/users/view-change-password/{user}', [UserController::class, 'viewChangePassword'])->name('users.view-change-password');
-    Route::post('/users/change-password/{user}', [UserController::class, 'changePassword'])->name('users.change-password');
+    Route::get('/users/change-password/{user}', [UserController::class, 'changePassword'])->name('users.change-password');
+    Route::post('/users/change-password/{user}', [UserController::class, 'updatePassword'])->name('users.update-password');
     Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
 
     Route::resource('warehouses', WarehouseController::class);
@@ -59,5 +59,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('permissions', PermissionController::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
