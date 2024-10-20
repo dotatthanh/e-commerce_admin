@@ -11,6 +11,12 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WarehouseController;
+use App\Http\Controllers\Web\WebController;
+use App\Http\Controllers\Web\RegisteredCustomerController;
+use App\Http\Controllers\Web\AuthenticatedSessionController;
+use App\Http\Controllers\Web\CustomerController;
+use App\Http\Controllers\Web\PasswordResetLinkController;
+use App\Http\Controllers\Web\NewPasswordController;
 // use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,5 +66,38 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Route::name('web.')->prefix('web')->group(function () {
+    Route::get('register', [RegisteredCustomerController::class, 'create'])
+        ->name('register');
+
+    Route::post('register', [RegisteredCustomerController::class, 'store']);
+
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])
+        ->name('login');
+
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
+
+    Route::get('/change-password', [CustomerController::class, 'changePassword'])->name('change-password');
+    Route::post('/change-password', [CustomerController::class, 'updatePassword'])->name('update-password');
+
+    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+        ->name('password.request');
+
+    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+        ->name('password.email');
+
+    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+        ->name('password.reset');
+
+    Route::post('reset-password', [NewPasswordController::class, 'store'])
+        ->name('password.store');
+
+    Route::get('search', [WebController::class, 'search'])
+        ->name('search');
+});
 
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
