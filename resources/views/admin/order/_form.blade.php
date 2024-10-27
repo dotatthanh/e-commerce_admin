@@ -110,12 +110,6 @@
     <script src="{{ asset('/assets/js/pages/import-order/form-repeater.int.js') }}"></script>
 
     <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
         function getVariantsByProductId(self) {
             const index = self.attr('name').match(/import_orders\[(\d+)\]/)[1];
             const id = self.val()
@@ -127,7 +121,7 @@
             if (!id) return;
 
             $.ajax({
-                url: `/products/get-variants/${id}`,
+                url: `/admin/products/get-variants/${id}`,
                 type: "POST"
             })
             .done(function (response) {
@@ -156,7 +150,7 @@
             if (!id) return;
 
             $.ajax({
-                url: `/products/supplier/${id}`,
+                url: `/admin/products/supplier/${id}`,
                 type: "POST"
             })
             .done(function (response) {

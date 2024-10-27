@@ -20,19 +20,13 @@ use App\Http\Controllers\Web\NewPasswordController;
 // use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('template.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->prefix('admin')->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
+    Route::get('/', function () {
+        return redirect()->route('users.index');
+    });
 
     Route::post('/products/upload-image-details', [ProductController::class, 'uploadImageDetails'])->name('products.upload-image-details');
     Route::post('/products/get-variants/{id}', [ProductController::class, 'getVariants'])->name('products.get-variants');
