@@ -206,7 +206,7 @@ class CustomerController extends Controller
 
     public function logout()
     {
-        auth()->guard('customer')->logout();
+        auth()->guard('web')->logout();
 
         return redirect()->route('pages.index');
     }

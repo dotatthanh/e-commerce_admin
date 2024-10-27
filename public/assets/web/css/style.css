@@ -901,3 +901,9 @@ footer form button{
   padding: 7px 40px;
 }
 /*---------------------------------End Trang Contact---------------------------------*/
+.d-block {
+  display: block;
+}
+.mt-2 {
+  margin-top: 10px;
+}

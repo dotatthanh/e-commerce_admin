@@ -72,20 +72,20 @@ Route::name('web.')->prefix('web')->group(function () {
         return view('web.page.product-detail');
     });
 
-    Route::get('register', [RegisteredCustomerController::class, 'create'])
+    Route::get('dang-ky', [RegisteredCustomerController::class, 'create'])
         ->name('register');
 
-    Route::post('register', [RegisteredCustomerController::class, 'store']);
+    Route::post('dang-ky', [RegisteredCustomerController::class, 'store']);
 
-    Route::get('login', [AuthenticatedSessionController::class, 'create'])
+    Route::get('dang-nhap', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
-    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+    Route::post('dang-nhap', [AuthenticatedSessionController::class, 'store']);
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-    Route::get('/change-password', [CustomerController::class, 'changePassword'])->name('change-password');
+    Route::get('/doi-mat-khau', [CustomerController::class, 'changePassword'])->name('change-password');
     Route::post('/change-password', [CustomerController::class, 'updatePassword'])->name('update-password');
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
@@ -100,7 +100,7 @@ Route::name('web.')->prefix('web')->group(function () {
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
 
-    Route::get('search', [WebController::class, 'search'])
+    Route::get('tim-kiem', [WebController::class, 'search'])
         ->name('search');
 });
 

@@ -3,7 +3,7 @@
     <div class="container p-top50 p-bot50">
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="text-center m-bot50 h2">Đăng ký</h2>
+                <h2 class="text-center m-bot50 h2">ĐĂNG KÝ</h2>
                 <form action="{{ route('web.register') }}" method="post">
                     @csrf
                     <div class="form-group">
@@ -108,6 +108,7 @@
                     </div>
                     
                     <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
+                    <a href="{{ route('web.login') }}" class="btn btn-success btn-block">Đăng nhập</a>
                 </form>
             </div>
         </div>
@@ -118,12 +119,6 @@
 <style>
     .custom-line-height {
         line-height: 21px;
-    }
-    .d-block {
-        display: block;
-    }
-    .mt-2 {
-        margin-top: 10px;
     }
 </style>
 @endsection

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
-    public function changePassword()
+    public function  changePassword()
     {
         $data = [
             'user' => auth()->guard('web')->user(),

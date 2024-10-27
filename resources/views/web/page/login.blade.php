@@ -3,7 +3,7 @@
     <div class="container p-top50 p-bot50">
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="text-center m-bot50 h2">Đăng Nhập</h2>
+                <h2 class="text-center m-bot50 h2">ĐĂNG NHẬP</h2>
                 <form action="{{ route('web.login') }}" method="post">
                     @csrf
                     <div class="form-group">
@@ -35,14 +35,4 @@
             </div>
         </div>
     </div>
-@endsection
-@section('css')
-<style>
-    .d-block {
-        display: block;
-    }
-    .mt-2 {
-        margin-top: 10px;
-    }
-</style>
 @endsection
