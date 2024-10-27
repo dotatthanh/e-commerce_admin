@@ -12,11 +12,15 @@ class Customer extends Authenticatable
         'code',
         'name',
         'email',
-        'phone',
+        'phone_number',
         'address',
         'password',
         'birthday',
         'gender',
+    ];
+
+    protected $hidden = [
+        'password',
     ];
 
     public function orders()

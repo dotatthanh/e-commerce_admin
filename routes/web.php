@@ -62,6 +62,16 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 require __DIR__ . '/auth.php';
 
 Route::name('web.')->prefix('web')->group(function () {
+    Route::get('/', function () {
+        return view('web.page.home');
+    })->name('home');
+    Route::get('/category', function () {
+        return view('web.page.category');
+    });
+    Route::get('/product-detail', function () {
+        return view('web.page.product-detail');
+    });
+
     Route::get('register', [RegisteredCustomerController::class, 'create'])
         ->name('register');
 

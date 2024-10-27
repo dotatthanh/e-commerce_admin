@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code')->default('');
-            $table->string('email')->unique()->nullable();
+            $table->string('email')->unique();
             $table->string('password');
             $table->string('name');
             $table->string('address')->nullable();
-            $table->string('phone')->unique()->nullable();
+            $table->string('phone_number')->unique()->nullable();
             $table->date('birthday')->nullable();
             $table->enum('gender', ['Nam', 'Nữ'])->nullable();
             $table->rememberToken();

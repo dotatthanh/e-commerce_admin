@@ -12,7 +12,7 @@ class WebController extends Controller
     {
         $data = Product::when($request->search, function ($query, $search) {
             return $query->where('name', 'like', '%' . $search . '%');
-        })->paginate(12)->appends(['search' => $request->search]);
+        })->paginate(1)->appends(['search' => $request->search]);
 
         $data = [
             'data' => $data,
