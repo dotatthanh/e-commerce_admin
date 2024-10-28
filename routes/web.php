@@ -30,7 +30,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::post('/products/upload-image-details', [ProductController::class, 'uploadImageDetails'])->name('products.upload-image-details');
     Route::post('/products/get-variants/{id}', [ProductController::class, 'getVariants'])->name('products.get-variants');
-    Route::post('/products/supplier/{id}', [ProductController::class, 'getProductsBySupplierId'])->name('products.get-variants');
+    Route::post('/products/supplier/{id}', [ProductController::class, 'getProductsBySupplierId'])->name('products.get-products-by-supplier-id');
     Route::resource('products', ProductController::class);
 
     Route::resource('categories', CategoryController::class);
