@@ -11,12 +11,12 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WarehouseController;
-use App\Http\Controllers\Web\WebController;
-use App\Http\Controllers\Web\RegisteredCustomerController;
 use App\Http\Controllers\Web\AuthenticatedSessionController;
 use App\Http\Controllers\Web\CustomerController;
-use App\Http\Controllers\Web\PasswordResetLinkController;
 use App\Http\Controllers\Web\NewPasswordController;
+use App\Http\Controllers\Web\PasswordResetLinkController;
+use App\Http\Controllers\Web\RegisteredCustomerController;
+use App\Http\Controllers\Web\WebController;
 // use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,7 +59,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('permissions', PermissionController::class);
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
 
 Route::name('web.')->prefix('web')->group(function () {
     Route::get('/', function () {
@@ -88,10 +88,10 @@ Route::name('web.')->prefix('web')->group(function () {
     Route::get('/doi-mat-khau', [CustomerController::class, 'changePassword'])->name('change-password');
     Route::post('/change-password', [CustomerController::class, 'updatePassword'])->name('update-password');
 
-    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+    Route::get('quen-mat-khau', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
 
-    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+    Route::post('quen-mat-khau', [PasswordResetLinkController::class, 'store'])
         ->name('password.email');
 
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])

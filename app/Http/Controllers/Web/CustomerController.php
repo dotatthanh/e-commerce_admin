@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\ChangePasswordRequest;
-use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
-    public function  changePassword()
+    public function changePassword()
     {
         $data = [
             'user' => auth()->guard('web')->user(),

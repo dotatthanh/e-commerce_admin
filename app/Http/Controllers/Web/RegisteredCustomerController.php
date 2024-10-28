@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterCustomerRequest;
 use App\Models\Customer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
-use App\Http\Requests\RegisterCustomerRequest;
 
 class RegisteredCustomerController extends Controller
 {
@@ -37,7 +37,7 @@ class RegisteredCustomerController extends Controller
             'address' => $request->address,
         ]);
         $customer->update([
-            'code' => 'KH'.$customer->id
+            'code' => 'KH'.$customer->id,
         ]);
 
         // event(new Registered($customer));
