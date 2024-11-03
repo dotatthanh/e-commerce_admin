@@ -12,13 +12,13 @@ use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WarehouseController;
 use App\Http\Controllers\Web\AuthenticatedSessionController;
+use App\Http\Controllers\Web\CategoryController as WebCategoryController;
 use App\Http\Controllers\Web\CustomerController;
 use App\Http\Controllers\Web\NewPasswordController;
 use App\Http\Controllers\Web\PasswordResetLinkController;
+use App\Http\Controllers\Web\ProductController as WebProductController;
 use App\Http\Controllers\Web\RegisteredCustomerController;
 use App\Http\Controllers\Web\WebController;
-use App\Http\Controllers\Web\ProductController as WebProductController;
-use App\Http\Controllers\Web\CategoryController as WebCategoryController;
 // use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,7 +63,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::name('web.')->prefix('web')->group(function () {
+Route::name('web.')->group(function () {
     Route::get('/', function () {
         return view('web.page.home');
     })->name('home');
@@ -93,9 +93,10 @@ Route::name('web.')->prefix('web')->group(function () {
     Route::get('/lich-su-mua-hang', [CustomerController::class, 'purchaseHistory'])->name('purchase-history');
     Route::get('/chi-tiet-don-hang/{order}', [CustomerController::class, 'orderDetail'])->name('order-detail');
 
-    Route::get('/san-pham/{product}', [WebProductController::class, 'detail'])->name('product-detail');
+    Route::get('/san-pham/{category}/{product}', [WebProductController::class, 'detail'])->name('product-detail');
+    Route::post('/products/get-variants-by-color-code', [WebProductController::class, 'getVariantsByColorCode'])->name('get-variants-by-color-code');
 
-    Route::get('/danh-muc/{category}', [WebCategoryController::class, 'detail'])->name('category-detail');
+    Route::get('/danh-muc/{category}', [WebCategoryController::class, 'detail'])->name('category');
 
     Route::get('quen-mat-khau', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');

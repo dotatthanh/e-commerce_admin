@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\View;
+
 use App\Models\Category;
+use Illuminate\Support\Facades\View;
 
 abstract class Controller
 {

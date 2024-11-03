@@ -40,7 +40,7 @@ class CustomerController extends Controller
     public function purchaseHistory()
     {
         $data = [
-            'data' => auth()->guard('web')->user()->orders
+            'data' => auth()->guard('web')->user()->orders,
         ];
 
         return view('web.page.purchase-history', $data);
@@ -53,7 +53,7 @@ class CustomerController extends Controller
 
         $data = [
             'order' => $order,
-            'data' => $data
+            'data' => $data,
         ];
 
         return view('web.page.order-detail', $data);

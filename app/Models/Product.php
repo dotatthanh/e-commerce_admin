@@ -56,4 +56,9 @@ class Product extends Model
     {
         return $this->belongsTo(Supplier::class);
     }
+
+    public function getColors()
+    {
+        return $this->variants()->pluck('color_code')->unique();
+    }
 }

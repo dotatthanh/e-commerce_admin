@@ -1,5 +1,5 @@
-<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-    <a href="#" title="" class="c-img">
+<div class="col-md-3 col-sm-3 col-xs-6 sp-hot p-bot50">
+    <a href="{{ route('web.product-detail', ['category' => $category->id, 'product' => $product->id]) }}" title="" class="c-img">
         <img title="" src="{{ asset($product->file_path) }}" alt="">
     </a>
     <div class="info-product">

@@ -7,7 +7,10 @@
         </h2>
         <div class="row p-top30">
             @foreach ($data as $item)
-            @include('web.components._product', ['product' => $item])
+                @include('web.components._product', [
+                    'category' => $item->categories->shuffle()->first(),
+                    'product' => $item
+                ])
             @endforeach
         </div>
 

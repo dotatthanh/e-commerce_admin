@@ -17,4 +17,9 @@ class Category extends Model
         'is_show',
         'sort',
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'category_products', 'product_category_id', 'product_id');
+    }
 }
