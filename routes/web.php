@@ -17,6 +17,8 @@ use App\Http\Controllers\Web\NewPasswordController;
 use App\Http\Controllers\Web\PasswordResetLinkController;
 use App\Http\Controllers\Web\RegisteredCustomerController;
 use App\Http\Controllers\Web\WebController;
+use App\Http\Controllers\Web\ProductController as WebProductController;
+use App\Http\Controllers\Web\CategoryController as WebCategoryController;
 // use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -87,6 +89,13 @@ Route::name('web.')->prefix('web')->group(function () {
 
     Route::get('/doi-mat-khau', [CustomerController::class, 'changePassword'])->name('change-password');
     Route::post('/change-password', [CustomerController::class, 'updatePassword'])->name('update-password');
+    Route::get('/thong-tin-ca-nhan', [CustomerController::class, 'profile'])->name('profile');
+    Route::get('/lich-su-mua-hang', [CustomerController::class, 'purchaseHistory'])->name('purchase-history');
+    Route::get('/chi-tiet-don-hang/{order}', [CustomerController::class, 'orderDetail'])->name('order-detail');
+
+    Route::get('/san-pham/{product}', [WebProductController::class, 'detail'])->name('product-detail');
+
+    Route::get('/danh-muc/{category}', [WebCategoryController::class, 'detail'])->name('category-detail');
 
     Route::get('quen-mat-khau', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
@@ -100,8 +109,9 @@ Route::name('web.')->prefix('web')->group(function () {
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
 
-    Route::get('tim-kiem', [WebController::class, 'search'])
-        ->name('search');
+    Route::get('tim-kiem', [WebController::class, 'search'])->name('search');
+    Route::get('chinh-sach-bao-mat', [WebController::class, 'privacyPolicy'])->name('privacy-policy');
+    Route::get('chinh-sach-mua-hang', [WebController::class, 'purchasePolicy'])->name('purchase-policy');
 });
 
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');

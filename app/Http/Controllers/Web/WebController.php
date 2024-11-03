@@ -20,4 +20,12 @@ class WebController extends Controller
 
         return view('web.page.search', $data);
     }
+
+    public function privacyPolicy() {
+        return view('web.page.privacy-policy');
+    }
+    
+    public function purchasePolicy() {
+        return view('web.page.purchase-policy');
+    }
 }

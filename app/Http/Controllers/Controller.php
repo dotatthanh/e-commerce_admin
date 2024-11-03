@@ -1,9 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\View;
+use App\Models\Category;
 
 abstract class Controller
 {
+    // public function __construct() {
+    //     if (auth()->guard('web')->check()) {
+    //         $cart = Cart::content();
+    //         View::share('cart', $cart);
+    //     }
+    //     $menu = Category::where('is_show', getConst('isShow')[1])->get();
+    //     View::share('menu', $menu);
+    // }
+
     public function responseError($status, $data, $message = '')
     {
         $response = [
