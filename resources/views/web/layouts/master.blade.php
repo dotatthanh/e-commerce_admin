@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="search">
+                    <a href="{{ route('web.cart') }}" class="search">
                         <p>({{ $cart->count() }}) Sản phẩm</p>
                         <form action="{{ route('web.search') }}" method="get">
                             <input type="text" name="search" value="{{ request('search') }}">
@@ -101,7 +101,7 @@
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </button>
                         </form>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
