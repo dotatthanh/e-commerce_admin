@@ -94,7 +94,7 @@
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="search">
-                        <p>(0) Sản phẩm</p>
+                        <p>({{ $cart->count() }}) Sản phẩm</p>
                         <form action="{{ route('web.search') }}" method="get">
                             <input type="text" name="search" value="{{ request('search') }}">
                             <button type="submit">
@@ -116,7 +116,7 @@
             <div class="row p-bot20">
                 <div class="col-md-5 col-sm-5 col-xs-12 contact">
                     <h2>LIÊN HỆ VỚI CHÚNG TÔI</h2>
-                    <p><i class="fa fa-map-marker" aria-hidden="true"></i>Võ Quý Huân, P.Phúc Diễn, Q.Bắc Từ Liêm Hà Nội
+                    <p><i class="fa fa-map-marker" aria-hidden="true"></i>Võ Quý Huân, P.Phúc Diễn, Q.Bắc Từ Liêm, Hà Nội
                     </p>
                     <p><i class="fa fa-phone-square" aria-hidden="true"></i>Bs.Vũ Trí Linh: <a
                             href="tel:0906 799 222">0906 799 222</a></p>

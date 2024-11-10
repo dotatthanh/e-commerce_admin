@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\View;
 
 abstract class Controller
@@ -13,6 +14,10 @@ abstract class Controller
         //     $cart = Cart::content();
         //     View::share('cart', $cart);
         // }
+        $cart = Cart::content();
+        View::share('cart', $cart);
+        // dd($cart);
+        // dd($cart->count());
 
         $categories = Category::isShow()->limit(8)->get();
         View::share('categories', $categories);

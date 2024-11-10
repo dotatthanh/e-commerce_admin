@@ -7,9 +7,5 @@
             <a href="#" title="">{{ $product->name }}</a>
         </h3>
         <span class="price">{{ $product->price }} VNĐ</span>
-        <form action="#">
-            <a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-            <button class="add">THÊM VÀO GIỎ</button>
-        </form>
     </div>
 </div>

@@ -5,7 +5,8 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="list-item">
                     <ul>
-                        <li><a href="{{ route('web.home') }}" title=""><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                        <li><a href="{{ route('web.home') }}" title=""><i class="fa fa-home" aria-hidden="true"></i></a>
+                        </li>
                         <li><a href="{{ route('web.category', $category->id) }}" title="">{{ $category->name }}</a></li>
                         <li>{{ $product->name }}</li>
                     </ul>
@@ -30,7 +31,8 @@
                 </div>
             </div>
             <div class="col-md-5 col-sm-5 col-xs-12 product-detail p-bot20">
-                <form action="#">
+                <form action="{{ route('web.add-to-cart') }}" method="POST">
+                    @csrf
                     <h2>{{ $product->name }}</h2>
                     <div class="stt">
                         <p>Tình trạng:</p> <span>{{ $product->quantity > 0 ? 'Còn hàng' : 'Hết hàng' }}</span>
@@ -42,22 +44,25 @@
                         <p>Màu sắc:</p>
                         @foreach ($product->getColors() as $variant)
                             @once
-                                <input type="hidden" name="color_code" value="{{ $variant }}">
+                                <input type="hidden" value="{{ $variant }}">
                                 @php $colorCode = $variant; @endphp
                             @endonce
-                            <a href="javascript:void(0)" title="{{ $variant }}" class="{{ $loop->first ? 'active' : '' }} item-color" style="background: {{ $variant }};" data-color-code="{{ $variant }}"></a> 
+                            <a href="javascript:void(0)" title="{{ $variant }}"
+                                class="{{ $loop->first ? 'active' : '' }} item-color"
+                                style="background: {{ $variant }};" data-color-code="{{ $variant }}"></a>
                         @endforeach
                     </div>
                     <div class="size">
-                        <p>Size:</p> 
-                        <select name="size" style="width: 150px;">
+                        <p>Size:</p>
+                        <select name="product_variant_id" style="width: 150px;">
                             @foreach ($product->variants->where('color_code', $colorCode) as $variant)
-                                <option value="{{ $variant->size }}">{{ $variant->size }}</option>
+                                <option value="{{ $variant->product_variant_id }}">{{ $variant->size }}</option>
                             @endforeach
                         </select>
                     </div>
                     @if ($product->quantity > 0)
-                    <button type="submit" class="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Thêm vào giỏ</button>
+                        <button type="submit" class="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Thêm
+                            vào giỏ</button>
                     @endif
                 </form>
             </div>
@@ -100,31 +105,31 @@
             $(".item-color").removeClass("active");
             $(this).addClass("active");
             const colorCode = $(this).data("color-code");
-            
+
             $.ajax({
-                url: `/products/get-variants-by-color-code`,
-                data: {
-                    color_code: colorCode,
-                    product_id: {{ $product->id }},
-                },
-                type: "POST"
-            })
-            .done(function (response) {
-                if (response.data && response.data.length) {
-                    loadSizes(response.data)
-                }
-            })
-            .fail(function () {
-                alert('Lỗi server!');
-            });
+                    url: `/products/get-variants-by-color-code`,
+                    data: {
+                        color_code: colorCode,
+                        product_id: {{ $product->id }},
+                    },
+                    type: "POST"
+                })
+                .done(function(response) {
+                    if (response.data && response.data.length) {
+                        loadSizes(response.data)
+                    }
+                })
+                .fail(function() {
+                    alert('Lỗi server!');
+                });
         });
 
         function loadSizes(data) {
-            let options = data.map(function (item) {
+            let options = data.map(function(item) {
                 return `<option value="${item.id}">${item.variant.size}</option>`;
             }).join('');
 
-            $(`select[name=size]`).html(options);
+            $(`select[name=product_variant_id]`).html(options);
         }
     </script>
 @endsection

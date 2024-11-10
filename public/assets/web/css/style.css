@@ -365,27 +365,25 @@ ul.slick-dots li button {
   font-size: 17px;
   color: #ffffff;
   background: #000000;
-  padding: 10px;
 }
 .sp-hot .info-product form{
   position: relative;
 }
-.sp-hot .info-product form a{
+.sp-hot .info-product form span{
+  position: absolute;
+  top: 0;
+  left: 0;
   display: inline-block;
   width: 40px;
-  height: 40px;
-  text-align: center;
+  line-height: 40px;
   background: #00b4ff;
   color: #fff;
-  float: left;
-  line-height: 40px;
 }
 .sp-hot .info-product form button{
   display: inline-block;
-  width: calc(100% - 40px);
+  width: 100%;
   height: 40px;
-  background: #000;
-
+  padding-left: 40px;
 }
 /*      End Sản phẩm bán chạy       */
 
@@ -919,4 +917,7 @@ footer form button{
 }
 .mt-2 {
   margin-top: 10px;
+}
+.float-right {
+  float: right;
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WarehouseController;
 use App\Http\Controllers\Web\AuthenticatedSessionController;
+use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\CategoryController as WebCategoryController;
 use App\Http\Controllers\Web\CustomerController;
 use App\Http\Controllers\Web\NewPasswordController;
@@ -111,6 +112,11 @@ Route::name('web.')->group(function () {
     Route::get('tim-kiem', [WebController::class, 'search'])->name('search');
     Route::get('chinh-sach-bao-mat', [WebController::class, 'privacyPolicy'])->name('privacy-policy');
     Route::get('chinh-sach-mua-hang', [WebController::class, 'purchasePolicy'])->name('purchase-policy');
+    Route::post('them-vao-gio', [CartController::class, 'addToCart'])->name('add-to-cart');
+    Route::get('gio-hang', [CartController::class, 'cart'])->name('cart');
+    Route::post('cap-nhat-gio-hang', [CartController::class, 'updateCart'])->name('update-cart');
+    Route::post('xoa-san-pham-gio-hang/{rowId}', [CartController::class, 'deleteItemCart'])->name('delete-item-cart');
+    Route::get('thanh-toan', [CartController::class, 'checkout'])->name('checkout');
 });
 
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');

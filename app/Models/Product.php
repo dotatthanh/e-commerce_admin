@@ -49,7 +49,7 @@ class Product extends Model
     public function variants()
     {
         return $this->belongsToMany(Variant::class, 'product_variants')
-            ->withPivot('quantity');
+            ->withPivot('id as product_variant_id', 'quantity')->as('pivot');
     }
 
     public function supplier()
