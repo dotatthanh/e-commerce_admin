@@ -18,6 +18,11 @@ class Category extends Model
         'sort',
     ];
 
+    public function scopeIsShow($query)
+    {
+        return $query->where('is_show', true);
+    }
+
     public function products()
     {
         return $this->belongsToMany(Product::class, 'category_products', 'product_category_id', 'product_id');

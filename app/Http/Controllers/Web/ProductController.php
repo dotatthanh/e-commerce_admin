@@ -18,7 +18,6 @@ class ProductController extends Controller
             ->take(4)
             ->get();
 
-        // dd($product->variants);
         $data = [
             'product' => $product->load('variants'),
             'category' => $category,

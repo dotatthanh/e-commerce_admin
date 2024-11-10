@@ -61,4 +61,14 @@ class Product extends Model
     {
         return $this->variants()->pluck('color_code')->unique();
     }
+
+    public function orderDetails()
+    {
+        return $this->hasManyThrough(OrderDetail::class, ProductVariant::class, 'product_id', 'product_variant_id', 'id', 'id');
+    }
+
+    // public function getBestSellingAttribute()
+    // {
+    //     return $this->orderDetails->sum('quantity');
+    // }
 }

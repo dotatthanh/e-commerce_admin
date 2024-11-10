@@ -164,13 +164,25 @@ body{
     position: absolute;
     opacity: 0;
     z-index: -1;
-    width: 120px;
+    width: 220px;
     padding-top: 10px;
     top: 70px;
   }
   .menu li ul li{
-    background: #fd030345;
     display: block;
+    color: #ffff;
+    padding: 5px 20px;
+    background: #333;
+    border-bottom: 1px dashed #ebebeb;
+  }
+  .menu li ul li:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  .menu li ul li:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: none;
   }
 
   .menu li ul li a{
@@ -180,7 +192,6 @@ body{
   }
   .menu li ul li:hover a{
     color: #00b4ff;
-    background: #fd030370;
     transition: .2s;
   }
   .menu li:hover ul{
@@ -323,7 +334,7 @@ ul.slick-dots li button {
 
 
 /*      Sản phẩm bán chạy       */
-.title-category a{
+.title-category {
   font-family: 'OpenSansB';
   font-size: 24px;
 }

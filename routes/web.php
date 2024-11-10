@@ -64,9 +64,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::name('web.')->group(function () {
-    Route::get('/', function () {
-        return view('web.page.home');
-    })->name('home');
+    Route::get('/', [WebController::class, 'index'])->name('home');
     Route::get('/category', function () {
         return view('web.page.category');
     });

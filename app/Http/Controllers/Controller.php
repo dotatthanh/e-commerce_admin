@@ -7,14 +7,15 @@ use Illuminate\Support\Facades\View;
 
 abstract class Controller
 {
-    // public function __construct() {
-    //     if (auth()->guard('web')->check()) {
-    //         $cart = Cart::content();
-    //         View::share('cart', $cart);
-    //     }
-    //     $menu = Category::where('is_show', getConst('isShow')[1])->get();
-    //     View::share('menu', $menu);
-    // }
+    public function __construct() {
+        // if (auth()->guard('web')->check()) {
+        //     $cart = Cart::content();
+        //     View::share('cart', $cart);
+        // }
+
+        $categories = Category::isShow()->limit(8)->get();
+        View::share('categories', $categories);
+    }
 
     public function responseError($status, $data, $message = '')
     {
