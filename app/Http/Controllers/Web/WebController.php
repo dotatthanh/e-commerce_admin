@@ -43,10 +43,10 @@ class WebController extends Controller
             } else {
                 $suggestedProducts = $suggestedProducts->inRandomOrder();
             }
-        }
-        else {
+        } else {
             $suggestedProducts = $suggestedProducts->inRandomOrder();
         }
+
         return $suggestedProducts->take(4)->get();
     }
 
@@ -57,15 +57,15 @@ class WebController extends Controller
             if ($search) {
                 $keySearch = $search->key_search;
 
-                if (!in_array($request->search, $keySearch)) {
+                if (! in_array($request->search, $keySearch)) {
                     $keySearch[] = $request->search;
-                
+
                     $search->update(['key_search' => $keySearch]);
                 }
             } else {
                 Search::create([
                     'key_search' => [$request->search],
-                    'customer_id' => auth()->guard('web')->id()
+                    'customer_id' => auth()->guard('web')->id(),
                 ]);
             }
         }

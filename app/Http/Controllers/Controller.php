@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\View;
 
 abstract class Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         // if (auth()->guard('web')->check()) {
         //     $cart = Cart::content();
         //     View::share('cart', $cart);
