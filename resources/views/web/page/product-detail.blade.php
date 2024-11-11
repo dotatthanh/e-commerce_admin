@@ -34,9 +34,9 @@
                 <form action="{{ route('web.add-to-cart') }}" method="POST">
                     @csrf
                     <h2>{{ $product->name }}</h2>
-                    <div class="stt">
+                    {{-- <div class="stt">
                         <p>Tình trạng:</p> <span>{{ $product->quantity > 0 ? 'Còn hàng' : 'Hết hàng' }}</span>
-                    </div>
+                    </div> --}}
                     <div class="price-product">
                         <p>Giá bán:</p> <span>{{ number_format($product->price) }}đ</span>
                     </div>
@@ -60,10 +60,10 @@
                             @endforeach
                         </select>
                     </div>
-                    @if ($product->quantity > 0)
+                    {{-- @if ($product->pivot->quantity > 0) --}}
                         <button type="submit" class="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Thêm
                             vào giỏ</button>
-                    @endif
+                    {{-- @endif --}}
                 </form>
             </div>
         </div>

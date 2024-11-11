@@ -116,7 +116,8 @@ Route::name('web.')->group(function () {
     Route::get('gio-hang', [CartController::class, 'cart'])->name('cart');
     Route::post('cap-nhat-gio-hang', [CartController::class, 'updateCart'])->name('update-cart');
     Route::post('xoa-san-pham-gio-hang/{rowId}', [CartController::class, 'deleteItemCart'])->name('delete-item-cart');
-    Route::get('thanh-toan', [CartController::class, 'checkout'])->name('checkout');
+    Route::get('thanh-toan', [CartController::class, 'viewCheckout'])->name('view-checkout');
+    Route::post('thanh-toan', [CartController::class, 'checkout'])->name('checkout');
 });
 
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');

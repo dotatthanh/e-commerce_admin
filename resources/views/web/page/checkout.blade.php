@@ -3,7 +3,7 @@
     <div class="container p-top50 p-bot50">
         <div class="row">
             <h2 class="text-center m-bot50 h2">THANH TOÁN</h2>
-            <form action="" method="POST">
+            <form action="{{ route('web.checkout') }}" method="POST">
                 @csrf
                 <div class="table-responsive">
                     <table class="table table-bordered">

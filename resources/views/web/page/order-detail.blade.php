@@ -36,7 +36,7 @@
                         </tr>
                         @endforeach
                         <tr class="font-weight-bold">
-                            <td colspan="5" class="text-end">Tổng tiền</td>
+                            <td colspan="6" class="text-right">Tổng tiền</td>
                             <td class="fw-bold text-center">{{ number_format($order->total_money) }}</td>
                         </tr>
                     </tbody>

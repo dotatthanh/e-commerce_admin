@@ -53,7 +53,7 @@
                     <div class="float-right">
                         <button tupe="submit" class="btn btn-primary">Cập nhật</button>
                         @if (!$cart->isEmpty())
-                            <a href="{{ route('web.checkout') }}" class="btn btn-primary">Thanh toán</a>
+                            <a href="{{ route('web.view-checkout') }}" class="btn btn-primary">Thanh toán</a>
                         @endif
                     </div>
                     @if ($cart->isEmpty())

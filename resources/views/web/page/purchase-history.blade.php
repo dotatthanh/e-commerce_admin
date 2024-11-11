@@ -29,7 +29,7 @@
                             <td class="text-center">
                                 <ul class="list-unstyled hstack gap-1 mb-0">
                                     <li>
-                                        <a href="{{ route('orders.show', $item->id) }}" class="btn btn-sm bg-info text-info">
+                                        <a href="{{ route('web.order-detail', $item->id) }}" class="btn btn-sm bg-info text-info">
                                             Chi tiết
                                         </a>
                                     </li>
