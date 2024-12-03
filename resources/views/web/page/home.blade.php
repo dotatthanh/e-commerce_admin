@@ -1,6 +1,6 @@
 @extends('web.layouts.master')
 @section('content')
-    <div class="container p-top50 pad20">
+    {{-- <div class="container p-top50 pad20">
         <div class="row row20">
             <div class="col-md-7 col-sm-7 col-xs-12 pad20">
                 <div class="slider-noibat">
@@ -102,5 +102,196 @@
             @endforeach
         </div>
     </div>
-    <!-- 			End Gợi ý mua hàng -->
+    <!-- 			End Gợi ý mua hàng --> --}}
+
+    <div class="user-chat" style="width: 328px; position: fixed; right: 0">
+        <div class="card">
+            <div class="px-4 py-2 border-bottom">
+                <div class="row">
+                    <h5 class="font-size-15 mb-1">Chat AI</h5>
+                    <p class="text-muted mb-0"><i class="mdi mdi-circle text-success align-middle me-1"></i> Đang hoạt động</p>
+                </div>
+            </div>
+
+{{-- 455 --}}
+            <div>
+                <div class="chat-conversation p-3">
+                    <ul class="list-unstyled mb-0" data-simplebar style="max-height: 290px;">
+                        <li>
+                            <div class="chat-day-title">
+                                <span class="title">Hôm nay</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="conversation-list">
+                                {{-- <div class="dropdown">
+
+                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Copy</a>
+                                        <a class="dropdown-item" href="#">Save</a>
+                                        <a class="dropdown-item" href="#">Forward</a>
+                                        <a class="dropdown-item" href="#">Delete</a>
+                                    </div>
+                                </div> --}}
+                                <div class="ctext-wrap">
+                                    <div class="conversation-name">Chat AI</div>
+                                    <p>
+                                        Xin chào!
+                                    </p>
+                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:00</p>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="right">
+                            <div class="conversation-list">
+                                {{-- <div class="dropdown">
+
+                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Copy</a>
+                                        <a class="dropdown-item" href="#">Save</a>
+                                        <a class="dropdown-item" href="#">Forward</a>
+                                        <a class="dropdown-item" href="#">Delete</a>
+                                    </div>
+                                </div> --}}
+                                <div class="ctext-wrap">
+                                    <div class="conversation-name">Bạn</div>
+                                    <p>Xin chào, bạn khỏe không? Cuộc họp tiếp theo của chúng ta thế nào?</p>
+
+                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:02</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="conversation-list">
+                                {{-- <div class="dropdown">
+
+                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Copy</a>
+                                        <a class="dropdown-item" href="#">Save</a>
+                                        <a class="dropdown-item" href="#">Forward</a>
+                                        <a class="dropdown-item" href="#">Delete</a>
+                                    </div>
+                                </div> --}}
+                                <div class="ctext-wrap">
+                                    <div class="conversation-name">Steven Franklin</div>
+                                    <p>
+                                        Yeah everything is fine
+                                    </p>
+
+                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:06</p>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="last-chat">
+                            <div class="conversation-list">
+                                {{-- <div class="dropdown">
+
+                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Copy</a>
+                                        <a class="dropdown-item" href="#">Save</a>
+                                        <a class="dropdown-item" href="#">Forward</a>
+                                        <a class="dropdown-item" href="#">Delete</a>
+                                    </div>
+                                </div> --}}
+                                <div class="ctext-wrap">
+                                    <div class="conversation-name">Chat AI</div>
+                                    <p>Cuộc họp tiếp theo vào ngày mai lúc 10.00 sáng</p>
+                                    <p class="chat-time mb-0">10:06</p>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class=" right">
+                            <div class="conversation-list">
+                                {{-- <div class="dropdown">
+
+                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Copy</a>
+                                        <a class="dropdown-item" href="#">Save</a>
+                                        <a class="dropdown-item" href="#">Forward</a>
+                                        <a class="dropdown-item" href="#">Delete</a>
+                                    </div>
+                                </div> --}}
+                                <div class="ctext-wrap">
+                                    <div class="conversation-name">Henry Wells</div>
+                                    <p>
+                                        Wow that's great
+                                    </p>
+
+                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:07</p>
+                                </div>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <div class="p-3 chat-input-section">
+                    <div class="row">
+                        <div class="col">
+                            <div class="position-relative">
+                                <input type="text" class="form-control chat-input" placeholder="Nhập tin nhắn...">
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit"
+                                class="btn btn-primary btn-rounded chat-send w-md waves-effect waves-light"><span
+                                    class="d-none d-sm-inline-block me-2">Gửi</span> <i
+                                    class="mdi mdi-send"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('css')
+    <!-- Bootstrap Css -->
+    <link href="{{ asset('/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{ asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{ asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    <!-- toastr css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('/assets/libs/toastr/toastr.min.css') }}">
+@endsection
+
+@section('script')
+    <!-- JAVASCRIPT -->
+    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/metismenu/metismenu.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/node-waves/node-waves.min.js') }}"></script>
+    <!-- toastr plugin -->
+    <script src="{{ asset('/assets/libs/toastr/toastr.min.js') }}"></script>
+    <!-- App js -->
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
 @endsection
