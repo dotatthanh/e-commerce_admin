@@ -104,7 +104,8 @@
     </div>
     <!-- 			End Gợi ý mua hàng -->
 
-    <button type="button" id="chat-ai" style="position: fixed; right: 0; bottom: 10px; background: #fff; border-radius: 100%;">
+    <button type="button" id="chat-ai"
+        style="position: fixed; right: 0; bottom: 10px; background: #fff; border-radius: 100%;">
         <img src="{{ asset('/assets/images/chat-ai.svg') }}" alt="">
     </button>
 
@@ -115,7 +116,8 @@
 
                     <div class="col-md-9 col-9">
                         <h5 class="font-size-15 mb-1">Chat AI</h5>
-                        <p class="text-muted mb-0"><i class="mdi mdi-circle text-success align-middle me-1"></i> Đang hoạt động</p>
+                        <p class="text-muted mb-0"><i class="mdi mdi-circle text-success align-middle me-1"></i> Đang hoạt
+                            động</p>
                     </div>
 
                     <div class="col-md-3 col-3">
@@ -123,7 +125,8 @@
                         <ul class="list-inline user-chat-nav text-end mb-0">
                             <li class="list-inline-item d-none d-sm-inline-block">
                                 <div class="dropdown">
-                                    <button class="btn nav-btn dropdown-toggle" id="window-chat-minimize" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn nav-btn dropdown-toggle" id="window-chat-minimize" type="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="mdi mdi-window-minimize"></i>
                                     </button>
                                 </div>
@@ -165,7 +168,7 @@
                             </div>
                         </li>
 
-                        <li>
+                        {{-- <li>
                             <div class="conversation-list">
                                 <div class="ctext-wrap">
                                     <div class="conversation-name">Steven Franklin</div>
@@ -201,9 +204,18 @@
                                     <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:07</p>
                                 </div>
                             </div>
+                        </li> --}}
+
+                        <li class="right">
+                            <div class="conversation-list">
+                                <div class="ctext-wrap">
+                                    <div class="conversation-name">Bạn</div>
+                                    <p>test</p>
+        
+                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:02</p>
+                                </div>
+                            </div>
                         </li>
-
-
                     </ul>
                 </div>
                 <div class="p-3 chat-input-section">
@@ -214,10 +226,9 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <button type="submit"
+                            <button type="button"
                                 class="btn btn-primary btn-rounded chat-send w-md waves-effect waves-light"><span
-                                    class="d-none d-sm-inline-block me-2">Gửi</span> <i
-                                    class="mdi mdi-send"></i></button>
+                                    class="d-none d-sm-inline-block me-2">Gửi</span> <i class="mdi mdi-send"></i></button>
                         </div>
                     </div>
                 </div>
@@ -233,8 +244,6 @@
     <link href="{{ asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-    <!-- toastr css -->
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('/assets/libs/toastr/toastr.min.css') }}"> --}}
 @endsection
 
 @section('script')
@@ -250,13 +259,51 @@
     {{-- <script src="{{ asset('assets/js/app.min.js') }}"></script> --}}
 
     <script>
-        $("#chat-ai").on( "click", function() {
+        $("#chat-ai").on("click", function() {
             $(".user-chat").toggleClass('hidden');
             $("#chat-ai").toggleClass('hidden');
-        } );
-        $("#window-chat-minimize").on( "click", function() {
+        });
+        $("#window-chat-minimize").on("click", function() {
             $(".user-chat").toggleClass('hidden');
             $("#chat-ai").toggleClass('hidden');
-        } );
+        });
+
+        $(".chat-send").on("click", function() {
+            let content = $(".chat-input").val();
+
+            let htmlYou = `
+                <li class="right">
+                    <div class="conversation-list">
+                        <div class="ctext-wrap">
+                            <div class="conversation-name">Bạn</div>
+                            <p>${content}</p>
+
+                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:02</p>
+                        </div>
+                    </div>
+                </li>`;
+            $(".simplebar-content").append(htmlYou);
+            $(".chat-input").val('')
+
+            ChatAiReply(content)
+        });
+
+        function ChatAiReply(content) {
+            let htmlChatAi = `
+                <li>
+                    <div class="conversation-list">
+                        <div class="ctext-wrap">
+                            <div class="conversation-name">Chat AI</div>
+                            <p>
+                                Xin chào!
+                            </p>
+                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:00</p>
+                        </div>
+
+                    </div>
+                </li>`;
+
+            $(".simplebar-content").append(htmlChatAi);
+        }
     </script>
 @endsection
