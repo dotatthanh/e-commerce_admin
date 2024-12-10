@@ -79,8 +79,8 @@ class Product extends Model
         foreach ($data as $product) {
 
             $result .= "Tên sản phẩm: " . $product["name"] . ", ";
-            $result .= "Giá: " . $product["price"] . " VNĐ, ";
-            // $result .= "Giảm giá: " . $product["sale"] . "%, ";
+            // $result .= "Giá: " . $product["price"] . " VNĐ, ";
+            $result .= "Giảm giá: " . $product["sale"] . "%, ";
 
             foreach ($product["variants"] as $variant) {
                 $result .= "Màu " . $variant["color_name"] . " - ";

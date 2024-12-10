@@ -12,6 +12,7 @@
                             <th>Tổng tiền (VNĐ)</th>
                             <th>Giảm giá</th>
                             <th>Phương thức thanh toán</th>
+                            <th>Trạng thái thanh toán</th>
                             <th>Trạng thái</th>
                             <th class="text-center">Hành động</th>
                         </tr>
@@ -25,6 +26,7 @@
                             <td>{{ number_format($item->total_money) }}</td>
                             <td>{{ number_format($item->discount) }}</td>
                             <td>{{ $item->payment_method }}</td>
+                            <td>{{ $item->payment_status }}</td>
                             <td>{{ $item->status }}</td>
                             <td class="text-center">
                                 <ul class="list-unstyled hstack gap-1 mb-0">

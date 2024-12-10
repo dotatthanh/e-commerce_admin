@@ -7,6 +7,7 @@
             <div>Mã đơn hàng: {{ $order->code }}</div>
             <div>Tên khách hàng: {{ $order->customer->name }}</div>
             <div>Phương thức thanh toán: {{ $order->payment_method }}</div>
+            <div>Trạng thái thanh toán: {{ $order->payment_status }}</div>
             <div class="m-bot10">Trạng thái: {{ $order->status }}</div>
 
             <div class="table-responsive">

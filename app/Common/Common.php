@@ -24,6 +24,15 @@ if (! function_exists('getConst')) {
     }
 }
 
+if (! function_exists('convertTotalToNumber')) {
+    function convertTotalToNumber($total)
+    {
+        $convertedAmount = str_replace(',', '', $total);
+        $convertedAmount = (int) floatval($convertedAmount);
+        return $convertedAmount;
+    }
+}
+
 function timeAgo($timestamp)
 {
     $time = time() - strtotime($timestamp);

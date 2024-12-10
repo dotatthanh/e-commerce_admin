@@ -29,7 +29,7 @@
                             @endforeach
                             <tr>
                                 <td colspan="4" class="text-right">Tổng cộng</td>
-                                <td>{{ number_format($total) }} VNĐ</td>
+                                <td>{{ number_format(convertTotalToNumber($total)) }} VNĐ</td>
                             </tr>
                         </tbody>
                     </table>

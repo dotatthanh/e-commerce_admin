@@ -44,22 +44,22 @@
                             @if (!$cart->isEmpty())
                                 <tr>
                                     <td colspan="4" class="text-right">Tổng cộng</td>
-                                    <td colspan="2">{{ number_format($total) }} VNĐ</td>
+                                    <td colspan="2">{{ number_format(convertTotalToNumber($total)) }} VNĐ</td>
                                 </tr>
                             @endif
                         </tbody>
                     </table>
 
-                    <div class="float-right">
-                        <button tupe="submit" class="btn btn-primary">Cập nhật</button>
-                        @if (!$cart->isEmpty())
+                    @if (!$cart->isEmpty())
+                        <div class="float-right">
+                            <button tupe="submit" class="btn btn-primary">Cập nhật</button>
                             <a href="{{ route('web.view-checkout') }}" class="btn btn-primary">Thanh toán</a>
-                        @endif
-                    </div>
-                    @if ($cart->isEmpty())
-                        <div class="text-center">Không tìm thấy đơn hàng</div>
+                        </div>
                     @endif
                 </div>
+                @if ($cart->isEmpty())
+                    <div class="text-center">Không có sản phẩm</div>
+                @endif
             </form>
         </div>
     </div>

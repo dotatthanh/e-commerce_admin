@@ -18,6 +18,7 @@ class Order extends Model
         'discount_code_id',
         'payment_method',
         'status',
+        'payment_status',
     ];
 
     public function customer()

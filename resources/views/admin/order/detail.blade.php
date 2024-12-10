@@ -34,6 +34,9 @@
                             Phương thức thanh toán: {{ $order->payment_method }}
                         </div>
                         <div>
+                            Trạng thái thanh toán: {{ $order->payment_status }}
+                        </div>
+                        <div>
                             Trạng thái: {{ $order->status }}
                         </div>
                     </div>
