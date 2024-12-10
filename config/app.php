@@ -123,4 +123,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // key chat gpt
+    'chatgpt_api_key' => env('CHATGPT_API_KEY'),
 ];

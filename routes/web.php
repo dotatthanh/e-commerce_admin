@@ -118,6 +118,7 @@ Route::name('web.')->group(function () {
     Route::post('xoa-san-pham-gio-hang/{rowId}', [CartController::class, 'deleteItemCart'])->name('delete-item-cart');
     Route::get('thanh-toan', [CartController::class, 'viewCheckout'])->name('view-checkout');
     Route::post('thanh-toan', [CartController::class, 'checkout'])->name('checkout');
+    Route::post('generate-chat-ai', [WebController::class, 'generateChatAI'])->name('generate-chat-ai');
 });
 
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');

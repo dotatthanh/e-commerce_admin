@@ -138,8 +138,8 @@
 
             <div>
                 <div class="chat-conversation p-3">
-                    <ul class="list-unstyled mb-0" data-simplebar style="max-height: 290px;">
-                        <li>
+                    <ul class="list-unstyled mb-0" data-simplebar style="height: 290px;">
+                        {{-- <li>
                             <div class="chat-day-title">
                                 <span class="title">Hôm nay</span>
                             </div>
@@ -166,7 +166,7 @@
                                     <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:02</p>
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
 
                         {{-- <li>
                             <div class="conversation-list">
@@ -206,7 +206,7 @@
                             </div>
                         </li> --}}
 
-                        <li class="right">
+                        {{-- <li class="right">
                             <div class="conversation-list">
                                 <div class="ctext-wrap">
                                     <div class="conversation-name">Bạn</div>
@@ -215,7 +215,7 @@
                                     <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:02</p>
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <div class="p-3 chat-input-section">
@@ -269,41 +269,64 @@
         });
 
         $(".chat-send").on("click", function() {
-            let content = $(".chat-input").val();
+            let message = $(".chat-input").val();
 
             let htmlYou = `
                 <li class="right">
                     <div class="conversation-list">
                         <div class="ctext-wrap">
                             <div class="conversation-name">Bạn</div>
-                            <p>${content}</p>
+                            <p>${message}</p>
 
-                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:02</p>
+                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> ${getCurrentTime()}</p>
                         </div>
                     </div>
                 </li>`;
             $(".simplebar-content").append(htmlYou);
             $(".chat-input").val('')
 
-            ChatAiReply(content)
+            generateChatAI(message)
         });
 
-        function ChatAiReply(content) {
-            let htmlChatAi = `
-                <li>
-                    <div class="conversation-list">
-                        <div class="ctext-wrap">
-                            <div class="conversation-name">Chat AI</div>
-                            <p>
-                                Xin chào!
-                            </p>
-                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:00</p>
-                        </div>
+        function generateChatAI(message) {
+            $.ajax({
+                    url: "{{ route('web.generate-chat-ai') }}",
+                    type: "POST",
+                    data: {
+                        message: message
+                    },
+                })
+                .done(function(response) {
+                    if (response.status == "success") {
+                        let htmlChatAi = `
+                        <li>
+                            <div class="conversation-list">
+                                <div class="ctext-wrap">
+                                    <div class="conversation-name">Chat AI</div>
+                                    <p>
+                                        ${response.data.data.replace(/\n/g, "<br>")}
+                                    </p>
+                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> ${getCurrentTime()}</p>
+                                </div>
 
-                    </div>
-                </li>`;
+                            </div>
+                        </li>`;
 
-            $(".simplebar-content").append(htmlChatAi);
+                        $(".simplebar-content").append(htmlChatAi);
+                    } else {
+                        alert('Lỗi server!');
+                    }
+                })
+                .fail(function() {
+                    alert('Lỗi server!');
+                });
+        }
+
+        function getCurrentTime() {
+            let currentTime = new Date();
+            let hours = currentTime.getHours().toString().padStart(2, '0');
+            let minutes = currentTime.getMinutes().toString().padStart(2, '0');
+            return `${hours}:${minutes}`;
         }
     </script>
 @endsection

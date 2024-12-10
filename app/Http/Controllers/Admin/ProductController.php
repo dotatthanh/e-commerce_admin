@@ -161,7 +161,6 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        // dd($request->product_images);
         DB::beginTransaction();
         try {
             $params = $request->all();

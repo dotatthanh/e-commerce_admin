@@ -7,6 +7,8 @@ use App\Models\Product;
 use App\Models\Search;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Services\AIService;
+use Illuminate\Http\Response;
 
 class WebController extends Controller
 {
@@ -89,5 +91,16 @@ class WebController extends Controller
     public function purchasePolicy()
     {
         return view('web.page.purchase-policy');
+    }
+
+    public function generateChatAI(Request $request)
+    {
+        $aiService = new AIService();
+        $data = $aiService->generateChatAI($request->message);
+
+        if ($data["status"] == "success") {
+            return $this->responseSuccess(Response::HTTP_OK, $data);
+        }
+        return $this->responseError(Response::HTTP_BAD_REQUEST, $data);
     }
 }

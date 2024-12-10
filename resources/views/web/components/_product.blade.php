@@ -6,6 +6,6 @@
         <h3 class="title-product">
             <a href="#" title="">{{ $product->name }}</a>
         </h3>
-        <span class="price">{{ $product->price }} VNĐ</span>
+        <span class="price">{{ number_format($product->price) }} VNĐ</span>
     </div>
 </div>
