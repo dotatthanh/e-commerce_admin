@@ -95,13 +95,13 @@
                 <div class="col-md-3 col-sm-3 col-xs-12">
                     <a href="{{ route('web.cart') }}" class="search">
                         <p>({{ $cart->count() }}) Sản phẩm</p>
-                        <form action="{{ route('web.search') }}" method="get">
-                            <input type="text" name="search" value="{{ request('search') }}">
-                            <button type="submit">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </button>
-                        </form>
                     </a>
+                    <form action="{{ route('web.search') }}" method="get" class="form-search">
+                        <input type="text" name="search" value="{{ request('search') }}">
+                        <button type="submit">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
