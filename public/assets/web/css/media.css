@@ -55,10 +55,10 @@
 	    font-size: 13px;
 	    padding-left: 75px;
 	}
-	.search form input {
+	.form-search input {
 	    padding: 5px 50px 5px 10px;
 	}
-	.search form a {
+	.form-search a {
 	    padding: 6px;
 	}
 	.menu>ul>li:before {
@@ -69,7 +69,7 @@
 	    padding-right: 15px;
 	    font-size: 10px;
 	}
-	.search form {
+	.form-search {
 	    margin-top: 24px;
 	}
 	.fashions>.c-img {
@@ -213,7 +213,7 @@
 	    background: #999;
 	    transition: 0.2s;
 	}
-	.search form {
+	.form-search {
 	    max-width: 200px;
 	}
 	.sp-hot{
