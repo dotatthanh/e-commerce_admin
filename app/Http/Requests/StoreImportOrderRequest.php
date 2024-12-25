@@ -22,7 +22,7 @@ class StoreImportOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'supplier_id' => 'required|numeric|in:0,1',
+            'supplier_id' => 'required|numeric',
             'import_orders' => 'required|array',
             'import_orders.*.product_id' => 'required',
             'import_orders.*.product_variant_id' => 'required',
