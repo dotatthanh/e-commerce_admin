@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6 fashions pad10">
                         <a href="{{ route('web.category', 2) }}" title="Quần" class="c-img">
-                            <img title="Quần" src="{{ asset('assets/web/images/anh1-1.jpg') }}" alt="">
+                            <img title="Quần" src="{{ asset('assets/web/images/anh2-1.jpg') }}" alt="">
                         </a>
                         <div class="trousers">
                             <a href="{{ route('web.category', 2) }}" title="Quần">QUẦN</a>
@@ -115,7 +115,7 @@
                 <div class="row">
 
                     <div class="col-md-9 col-9">
-                        <h5 class="font-size-15 mb-1">Chat AI</h5>
+                        <h5 class="font-size-15 mb-1">AMI SHOP</h5>
                         <p class="text-muted mb-0"><i class="mdi mdi-circle text-success align-middle me-1"></i> Đang hoạt
                             động</p>
                     </div>
@@ -147,7 +147,7 @@
                         <li>
                             <div class="conversation-list">
                                 <div class="ctext-wrap">
-                                    <div class="conversation-name">Chat AI</div>
+                                    <div class="conversation-name">AMI SHOP</div>
                                     <p>
                                         Xin chào!
                                     </p>
@@ -185,7 +185,7 @@
                         <li class="last-chat">
                             <div class="conversation-list">
                                 <div class="ctext-wrap">
-                                    <div class="conversation-name">Chat AI</div>
+                                    <div class="conversation-name">AMI SHOP</div>
                                     <p>Cuộc họp tiếp theo vào ngày mai lúc 10.00 sáng</p>
                                     <p class="chat-time mb-0">10:06</p>
                                 </div>
@@ -302,7 +302,7 @@
                         <li>
                             <div class="conversation-list">
                                 <div class="ctext-wrap">
-                                    <div class="conversation-name">Chat AI</div>
+                                    <div class="conversation-name">AMI SHOP</div>
                                     <p>
                                         ${response.data.data.replace(/\n/g, "<br>")}
                                     </p>

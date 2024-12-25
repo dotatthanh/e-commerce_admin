@@ -31,7 +31,7 @@
                 <form method="GET" action="{{ route('discount-codes.index') }}" class="card-body border-bottom">
                     <div class="row g-3">
                         <div class="col-xxl-4 col-lg-6">
-                            <input type="search" name="search" class="form-control" id="search" placeholder="Nhập họ và tên" value="{{ request()->search }}">
+                            <input type="search" name="search" class="form-control" id="search" placeholder="Nhập tên mã giảm giá" value="{{ request()->search }}">
                         </div>
                         <div class="col-xxl-2 col-lg-4">
                             <button type="submit" class="btn btn-primary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Tìm kiếm</button>
