@@ -6,11 +6,11 @@
 
             <div class="ng-star-inserted">
                 <div class="article mt-3 mb-3">
-                    <h1>Chính Sách Bảo Mật của s-fashion.shop</h1>
+                    <h1>Chính Sách Bảo Mật của ami-fashion.shop</h1>
 
                     <p>&nbsp;</p>
 
-                    <p><em><strong>Riêng tư của khách hàng vô cùng quan trọng với S-FASHION.SHOP, vì thế chúng tôi chỉ
+                    <p><em><strong>Riêng tư của khách hàng vô cùng quan trọng với AMI-FASHION.SHOP, vì thế chúng tôi chỉ
                                 sử dụng thông tin cá nhân của quý khách vào những trường hợp nêu ra sau
                                 đây.</strong>&nbsp;</em></p>
 
@@ -34,7 +34,7 @@
 
                     <p><br>
                         <em>Nếu quý khách có ý kiến hay đóng góp gì, xin vui lòng gửi đến địa chỉ bưu điện hoặc gửi
-                            email tới hello@s-fashion.shop. Chúng tôi luôn sẳn sàng lắng nghe nhận xét của quý
+                            email tới hello@ami-fashion.shop. Chúng tôi luôn sẳn sàng lắng nghe nhận xét của quý
                             khách.</em>
                     </p>
 
@@ -46,12 +46,12 @@
                     <p>&nbsp;</p>
 
                     <p><strong>Thu thập thông tin cá nhân</strong><br>
-                        S-FASHION.SHOP&nbsp;không bán, chia sẻ hay trao đổi thông tin cá nhân của khách hàng thu thập
+                        AMI-FASHION.SHOP&nbsp;không bán, chia sẻ hay trao đổi thông tin cá nhân của khách hàng thu thập
                         trên trang web cho một bên thứ ba nào khác.<br>
                         <br>
                         Thông tin cá nhân thu thập được sẽ chỉ được sử dụng trong nội bộ công ty.&nbsp;<br>
                         <br>
-                        Khi quý khách đăng ký tài khoản S-FASHION.SHOP, thông tin cá nhân mà chúng tôi thu thập bao gồm:
+                        Khi quý khách đăng ký tài khoản AMI-FASHION.SHOP, thông tin cá nhân mà chúng tôi thu thập bao gồm:
                     </p>
 
                     <ul>
@@ -69,7 +69,7 @@
 
                     <p>Những thông tin trên sẽ được sử dụng cho một hoặc tất cả các mục đích sau đây:</p>
 
-                    <p>- Giao hàng quý khách đã mua tại S-FASHION.SHOP&nbsp;.<br>
+                    <p>- Giao hàng quý khách đã mua tại AMI-FASHION.SHOP&nbsp;.<br>
                         - Thông báo về việc giao hàng và hỗ trợ khách hàng.<br>
                         - Cung cấp thông tin liên quan đến sản phẩm.<br>
                         - Xử lý đơn đặt hàng và cung cấp dịch vụ và thông tin qua trang web của chúng tôi theo yêu cầu
@@ -90,7 +90,7 @@
 
                     <p>&nbsp;</p>
 
-                    <p>Khi quý khách đăng ký làm thành viên trên trang web hoặc ứng dụng&nbsp;S-FASHION.SHOP, chúng tôi
+                    <p>Khi quý khách đăng ký làm thành viên trên trang web hoặc ứng dụng&nbsp;AMI-FASHION.SHOP, chúng tôi
                         cũng sẽ sử dụng thông tin cá nhân của quý khách để gửi các thông tin khuyến mãi/tiếp thị.</p>
 
                     <p>&nbsp;</p>
@@ -115,12 +115,12 @@
 
                     <p><strong>Cập nhật thông tin cá nhân</strong><br>
                         Quý khách có thể cập nhật thông tin cá nhân của mình bất kỳ lúc nào bằng cách đăng nhập vào
-                        trang web hoặc ứng dụng&nbsp;S-FASHION.SHOP.&nbsp;</p>
+                        trang web hoặc ứng dụng&nbsp;AMI-FASHION.SHOP.&nbsp;</p>
 
                     <p>&nbsp;</p>
 
                     <p><strong>Bảo mật thông tin cá nhân</strong><br>
-                        S-FASHION.SHOP&nbsp;đảm bảo rằng mọi thông tin thu thập được sẽ được lưu giữ an toàn. Chúng tôi
+                        AMI-FASHION.SHOP&nbsp;đảm bảo rằng mọi thông tin thu thập được sẽ được lưu giữ an toàn. Chúng tôi
                         bảo vệ thông tin cá nhân của quý khách bằng cách:&nbsp;<br>
                         - Giới hạn truy cập thông tin cá nhân<br>
                         - Sử dụng sản phẩm công nghệ để ngăn chặn truy cập máy tính trái phép<br>
@@ -129,7 +129,7 @@
 
                     <p>&nbsp;</p>
 
-                    <p>S-FASHION.SHOP&nbsp;sử dụng công nghệ mã hóa theo giao thức 128-bit SSL (secure sockets layer)
+                    <p>AMI-FASHION.SHOP&nbsp;sử dụng công nghệ mã hóa theo giao thức 128-bit SSL (secure sockets layer)
                         khi xử lý thông tin tài chính của quý khách. Mã hóa 128-bit SSL phải mất xấp xỉ một nghìn tỉ năm
                         mới có thể phá vỡ được và là giao thức tiêu chuẩn của mã hóa.&nbsp;</p>
 
@@ -140,25 +140,25 @@
                     <p><br>
                         Chúng tôi sẽ không chia sẻ thông tin của quý khách cho bất kỳ một công ty nào khác ngoại trừ
                         những công ty và các bên thứ ba có liên quan trực tiếp đến việc giao hàng mà quý khách đã mua
-                        tại S-FASHION.SHOP. Trong một vài trường hợp đặc biệt, S-FASHION.SHOP&nbsp;có thể bị yêu cầu
+                        tại AMI-FASHION.SHOP. Trong một vài trường hợp đặc biệt, AMI-FASHION.SHOP&nbsp;có thể bị yêu cầu
                         phải tiết lộ thông tin cá nhân, ví dụ như khi có căn cứ cho việc tiết lộ thông tin là cần thiết
                         để ngăn chặn các mối đe dọa về tính mạng và sức khỏe, hay cho mục đích thực thi pháp luật.
-                        S-FASHION.SHOP&nbsp;cam kết tuân thủ Đạo luật Bảo Mật và các Nguyên tắc Bảo mật Quốc gia.&nbsp;
+                        AMI-FASHION.SHOP&nbsp;cam kết tuân thủ Đạo luật Bảo Mật và các Nguyên tắc Bảo mật Quốc gia.&nbsp;
                     </p>
 
                     <p>&nbsp;</p>
 
-                    <p>Nếu quý khách tin rằng bảo mật của quý khách bị S-FASHION.SHOP&nbsp;xâm phạm, xin vui lòng liên
-                        hệ với chúng tôi tại địa chỉ hello@s-fashion.shop&nbsp;để được giải quyết vấn đề.&nbsp;</p>
+                    <p>Nếu quý khách tin rằng bảo mật của quý khách bị AMI-FASHION.SHOP&nbsp;xâm phạm, xin vui lòng liên
+                        hệ với chúng tôi tại địa chỉ hello@ami-fashion.shop&nbsp;để được giải quyết vấn đề.&nbsp;</p>
 
                     <p>&nbsp;</p>
 
                     <p><strong>Thu thập dữ liệu máy tính</strong><br>
-                        Khi quý khách đến thăm S-FASHION.SHOP, máy chủ của công ty chúng tôi sẽ tự động lưu trữ thông
+                        Khi quý khách đến thăm AMI-FASHION.SHOP, máy chủ của công ty chúng tôi sẽ tự động lưu trữ thông
                         tin mà trình duyệt của quý khách gửi đến. Những thông tin này bao gồm:&nbsp;<br>
                         - Địa chỉ IP của quý khách<br>
                         - Loại trình duyệt<br>
-                        - Những trang mục trong S-FASHION.SHOP&nbsp;mà quý khách ghé thăm<br>
+                        - Những trang mục trong AMI-FASHION.SHOP&nbsp;mà quý khách ghé thăm<br>
                         - Khoảng thời gian quý khách giành ra đã xem những trang mục đó, sản phẩm, tìm kiếm thông tin
                         trên trang web, thời gian và ngày tháng truy cập, và các số liệu thống kê khác.&nbsp;</p>
 
@@ -170,7 +170,7 @@
 
                     <p>&nbsp;</p>
 
-                    <p>Như đã đề cập ở phần trên, S-FASHION.SHOP&nbsp;sẽ sử dụng tính năng của Google Analytics hoặc
+                    <p>Như đã đề cập ở phần trên, AMI-FASHION.SHOP&nbsp;sẽ sử dụng tính năng của Google Analytics hoặc
                         Firebase Analytics&nbsp;dựa trên những dữ liệu về quảng cáo bằng hình ảnh (Display advertising)
                         bao gồm những phần sau: báo cáo về Re-marketing, báo cáo về số lượt hiện quảng cáo hình ảnh trên
                         mạng lưới trang web của Google, báo cáo về Double Click, thống kê hành vi &amp; sở thích khách
@@ -180,25 +180,25 @@
 
                     <p>&nbsp;</p>
 
-                    <p>Ngoài ra, S-FASHION.SHOP&nbsp;còn sử dụng chức năng Re-marketing của Google Analytic để quảng cáo
+                    <p>Ngoài ra, AMI-FASHION.SHOP&nbsp;còn sử dụng chức năng Re-marketing của Google Analytic để quảng cáo
                         trực tuyến; các bên thứ ba (bao gồm Google) sẽ có thể hiển thị quảng cáo của
-                        S-FASHION.SHOP&nbsp;trên các website liên kết. S-FASHION.SHOP&nbsp;và bên cung cấp thứ 3, bao
+                        AMI-FASHION.SHOP&nbsp;trên các website liên kết. AMI-FASHION.SHOP&nbsp;và bên cung cấp thứ 3, bao
                         gồm cả Google, sẽ sử dụng cookies của bên thứ nhất (như Google Analytics cookies và cookie) của
                         bên thứ 3 (như DoubleClick) để thông báo, tối ưu hóa và trình chiếu các mẫu quảng cáo dựa trên
                         những lần khách hàng truy cập website trước đó, đồng thời cho biết kết quả phản ứng của khách
                         hàng đối với mẫu quảng cáo, những cách sử dụng khác của quảng cáo và độ tương tác của những mẫu
-                        quảng cáo này và dịch vụ quảng cáo đến số lượng truy cập vào trang S-FASHION.SHOP.&nbsp;</p>
+                        quảng cáo này và dịch vụ quảng cáo đến số lượng truy cập vào trang AMI-FASHION.SHOP.&nbsp;</p>
 
                     <p>&nbsp;</p>
 
                     <p><strong>Thay đổi của Chính sách Bảo mật&nbsp;</strong><br>
-                        S-FASHION.SHOP&nbsp;có quyền thay đổi và chỉnh sửa Quy định Bảo mật vào bất kỳ lúc nào. Bất cứ
+                        AMI-FASHION.SHOP&nbsp;có quyền thay đổi và chỉnh sửa Quy định Bảo mật vào bất kỳ lúc nào. Bất cứ
                         thay đổi nào về chính sách này đều được đăng trên trang web của chúng tôi.</p>
 
-                    <p>S-FASHION.SHOP&nbsp;có quyền thay đổi và chỉnh sửa Quy định Bảo mật vào bất kỳ lúc nào. Bất cứ
+                    <p>AMI-FASHION.SHOP&nbsp;có quyền thay đổi và chỉnh sửa Quy định Bảo mật vào bất kỳ lúc nào. Bất cứ
                         thay đổi nào về chính sách này đều được đăng trên trang web của chúng tôi.<br>
                         Nếu quý khách không hài lòng với việc chúng tôi xử lý thắc mắc hay khiếu nại của quý khách, xin
-                        vui lòng liên hệ với chúng tôi tại hello@s-fashion.shop.</p>
+                        vui lòng liên hệ với chúng tôi tại hello@ami-fashion.shop.</p>
                 </div>
             </div>
         </div>

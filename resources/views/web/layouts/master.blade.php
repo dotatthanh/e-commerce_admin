@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title> @yield('title') | S-Fashion</title>
+    <title> @yield('title') | AMI-Fashion</title>
     @include('web.layouts.head-css')
 </head>
 
@@ -41,7 +41,7 @@
                             alt="">
                     </a>
                     <h1>
-                        <a href="{{ route('web.home') }}" title="">S-FASHION</a>
+                        <a href="{{ route('web.home') }}" title="">AMI-FASHION</a>
                     </h1>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -116,12 +116,12 @@
             <div class="row p-bot20">
                 <div class="col-md-5 col-sm-5 col-xs-12 contact">
                     <h2>LIÊN HỆ VỚI CHÚNG TÔI</h2>
-                    <p><i class="fa fa-map-marker" aria-hidden="true"></i>Võ Quý Huân, P.Phúc Diễn, Q.Bắc Từ Liêm, Hà Nội
+                    <p><i class="fa fa-map-marker" aria-hidden="true"></i>386 Quốc lộ 62, Phường 6, Tân An, Long An
                     </p>
-                    <p><i class="fa fa-phone-square" aria-hidden="true"></i>Bs.Vũ Trí Linh: <a
-                            href="tel:0906 799 222">0906 799 222</a></p>
-                    <a href="mailto:S-fashion@gmail.com" title=""><i class="fa fa-envelope"
-                            aria-hidden="true"></i>S-fashion@gmail.com</a>
+                    <p><i class="fa fa-phone-square" aria-hidden="true"></i>Liên hệ: <a
+                            href="tel:0906 799 222">036 22 303 58</a></p>
+                    <a href="mailto:ami-fashion@gmail.com" title=""><i class="fa fa-envelope"
+                            aria-hidden="true"></i>AMI-fashion@gmail.com</a>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 guide">
                     <h2>CHÍNH SÁCH</h2>
@@ -134,7 +134,7 @@
             </div>
         </div>
         <div class="foot">
-            <p>© 2024 - Ecommerce software by PrestaShop™</p>
+            <p>© 2024-2025 | ĐỒ ÁN TỐT NGHIỆP</p>
         </div>
     </footer>
 

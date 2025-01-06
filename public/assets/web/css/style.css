@@ -33,6 +33,7 @@ body{
 }
 .img-responsive{
   margin: auto;
+  height: 100px;
 }
 .p-top30{
   padding-top: 30px;
