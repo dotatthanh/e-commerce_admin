@@ -4,7 +4,7 @@
     </a>
     <div class="info-product">
         <h3 class="title-product">
-            <a href="#" title="">{{ $product->name }}</a>
+            <a href="{{ route('web.product-detail', ['category' => $category->id, 'product' => $product->id]) }}" title="">{{ $product->name }}</a>
         </h3>
         <span class="price">{{ number_format($product->price) }} VNĐ</span>
     </div>

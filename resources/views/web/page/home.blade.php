@@ -89,20 +89,35 @@
     </div>
     <!-- 			End SP Mới -->
 
-    <!-- 			Gợi ý mua hàng -->
+    <!-- 			GỢI Ý THEO TỪ KHÓA TÌM KIẾM -->
     <div class="container p-top50">
         <h2 class="title-category">
-            GỢI Ý MUA HÀNG
+            GỢI Ý THEO TỪ KHÓA TÌM KIẾM
         </h2>
         <div class="row p-top30">
-            @foreach ($suggestedProducts as $item)
+            @foreach ($suggestedProductsBySearch as $item)
                 @include('web.components._product', [
                     'product' => $item,
                 ])
             @endforeach
         </div>
     </div>
-    <!-- 			End Gợi ý mua hàng -->
+    <!-- 			End GỢI Ý THEO TỪ KHÓA TÌM KIẾM -->
+
+    <!-- 			GỢI Ý THEO MÀU -->
+    <div class="container p-top50">
+        <h2 class="title-category">
+            GỢI Ý THEO MÀU
+        </h2>
+        <div class="row p-top30">
+            @foreach ($suggestedProductsByColor as $item)
+                @include('web.components._product', [
+                    'product' => $item,
+                ])
+            @endforeach
+        </div>
+    </div>
+    <!-- 			End GỢI Ý THEO MÀU -->
 
     <button type="button" id="chat-ai"
         style="position: fixed; right: 0; bottom: 10px; background: #fff; border-radius: 100%;">

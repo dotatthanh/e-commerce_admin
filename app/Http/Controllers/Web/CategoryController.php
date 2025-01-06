@@ -20,7 +20,7 @@ class CategoryController extends Controller
             ->when($request->order, function ($query, $order) {
                 return $query->orderBy('price', $order);
             })
-            ->paginate(4)->appends([
+            ->paginate(12)->appends([
                 'from' => $request->from,
                 'to' => $request->to,
             ]);

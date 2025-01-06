@@ -23,25 +23,64 @@ class WebController extends Controller
             ->take(4)
             ->get();
 
-        $suggestedProducts = $this->getSuggestedProducts();
+        $suggestedProductsBySearch = $this->getSuggestedProductsBySearch();
+        $suggestedProductsByColor = $this->getSuggestedProductsByColor();
 
         $data = [
             'newProducts' => $newProducts,
             'bestSellingProducts' => $bestSellingProducts,
-            'suggestedProducts' => $suggestedProducts,
+            'suggestedProductsBySearch' => $suggestedProductsBySearch,
+            'suggestedProductsByColor' => $suggestedProductsByColor,
         ];
 
         return view('web.page.home', $data);
     }
 
-    private function getSuggestedProducts()
+    private function getSuggestedProductsBySearch()
     {
         $suggestedProducts = Product::query();
 
         if (auth()->guard('web')->check()) {
             $search = Search::firstWhere('customer_id', auth()->guard('web')->id());
             if ($search) {
-                $suggestedProducts = $suggestedProducts->whereIn('name', $search->key_search);
+                $keySearch = $search->key_search;
+                for ($i = count($keySearch) - 1; $i >= 0 ; $i--) { 
+                    $suggestedProducts = $suggestedProducts->where('name', 'like', '%' . $keySearch[$i] . '%');
+                    if ($suggestedProducts->first()) {
+                        break;
+                    }
+                }
+            } else {
+                $suggestedProducts = $suggestedProducts->inRandomOrder();
+            }
+        } else {
+            $suggestedProducts = $suggestedProducts->inRandomOrder();
+        }
+
+        return $suggestedProducts->take(4)->get();
+    }
+
+    private function getSuggestedProductsByColor()
+    {
+        $suggestedProducts = Product::query();
+
+        if (auth()->guard('web')->check()) {
+            $search = Search::firstWhere('customer_id', auth()->guard('web')->id());
+            if ($search) {
+                $keySearch = $search->key_search;
+                for ($i = count($keySearch) - 1; $i >= 0 ; $i--) { 
+                    $firstSuggestedProducts = Product::with('variants')->where('name', 'like', '%' . $keySearch[$i] . '%')->first();
+                    if ($firstSuggestedProducts) {
+                        break;
+                    }
+                }
+
+                if ($firstSuggestedProducts) {
+                    $colorName = $firstSuggestedProducts->variants->first()->color_name;
+                    $suggestedProducts = $suggestedProducts->whereHas('variants', function ($subQuery) use ($colorName) {
+                        $subQuery->where('color_name', 'like', '%' . $colorName . '%');
+                    });
+                }
             } else {
                 $suggestedProducts = $suggestedProducts->inRandomOrder();
             }
@@ -73,7 +112,7 @@ class WebController extends Controller
         }
 
         $data = Product::when($request->search, function ($query, $search) {
-            return $query->where('name', 'like', '%'.$search.'%');
+            return $query->where('name', 'like', '%' . $search . '%');
         })->paginate(12)->appends(['search' => $request->search]);
 
         $data = [
