@@ -124,21 +124,22 @@
         <img src="{{ asset('/assets/images/chat-ai.svg') }}" alt="">
     </button>
 
-    <div class="user-chat hidden" style="width: 328px; position: fixed; right: 0; bottom: 0;">
+    <div class="user-chat hidden"
+        style="width: 328px; position: fixed; right: 0; bottom: 0; background: #fff; border: 1px solid #ebebeb">
         <div class="card">
             <div class="px-4 py-2 border-bottom">
                 <div class="row">
 
-                    <div class="col-md-9 col-9">
+                    <div class="col-md-9 col-xs-9">
                         <h5 class="font-size-15 mb-1">AMI SHOP</h5>
                         <p class="text-muted mb-0"><i class="mdi mdi-circle text-success align-middle me-1"></i> Đang hoạt
                             động</p>
                     </div>
 
-                    <div class="col-md-3 col-3">
+                    <div class="col-md-3 col-xs-3">
                         </button>
                         <ul class="list-inline user-chat-nav text-end mb-0">
-                            <li class="list-inline-item d-none d-sm-inline-block">
+                            <li class="list-inline-item ">
                                 <div class="dropdown">
                                     <button class="btn nav-btn dropdown-toggle" id="window-chat-minimize" type="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -153,97 +154,19 @@
 
             <div>
                 <div class="chat-conversation p-3">
-                    <ul class="list-unstyled mb-0" data-simplebar style="height: 290px;">
-                        {{-- <li>
-                            <div class="chat-day-title">
-                                <span class="title">Hôm nay</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="conversation-list">
-                                <div class="ctext-wrap">
-                                    <div class="conversation-name">AMI SHOP</div>
-                                    <p>
-                                        Xin chào!
-                                    </p>
-                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:00</p>
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li class="right">
-                            <div class="conversation-list">
-                                <div class="ctext-wrap">
-                                    <div class="conversation-name">Bạn</div>
-                                    <p>Xin chào, bạn khỏe không? Cuộc họp tiếp theo của chúng ta thế nào?</p>
-
-                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:02</p>
-                                </div>
-                            </div>
-                        </li> --}}
-
-                        {{-- <li>
-                            <div class="conversation-list">
-                                <div class="ctext-wrap">
-                                    <div class="conversation-name">Steven Franklin</div>
-                                    <p>
-                                        Yeah everything is fine
-                                    </p>
-
-                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:06</p>
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li class="last-chat">
-                            <div class="conversation-list">
-                                <div class="ctext-wrap">
-                                    <div class="conversation-name">AMI SHOP</div>
-                                    <p>Cuộc họp tiếp theo vào ngày mai lúc 10.00 sáng</p>
-                                    <p class="chat-time mb-0">10:06</p>
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li class=" right">
-                            <div class="conversation-list">
-                                <div class="ctext-wrap">
-                                    <div class="conversation-name">Henry Wells</div>
-                                    <p>
-                                        Wow that's great
-                                    </p>
-
-                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:07</p>
-                                </div>
-                            </div>
-                        </li> --}}
-
-                        {{-- <li class="right">
-                            <div class="conversation-list">
-                                <div class="ctext-wrap">
-                                    <div class="conversation-name">Bạn</div>
-                                    <p>test</p>
-        
-                                    <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:02</p>
-                                </div>
-                            </div>
-                        </li> --}}
-                    </ul>
+                    <ul class="list-unstyled mb-0" data-simplebar style="height: 290px;"></ul>
                 </div>
                 <div class="p-3 chat-input-section">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-xs-8">
                             <div class="position-relative">
                                 <input type="text" class="form-control chat-input" placeholder="Nhập tin nhắn...">
                             </div>
                         </div>
-                        <div class="col-auto">
+                        <div class="col-xs-4">
                             <button type="button"
                                 class="btn btn-primary btn-rounded chat-send w-md waves-effect waves-light"><span
-                                    class="d-none d-sm-inline-block me-2">Gửi</span> <i class="mdi mdi-send"></i></button>
+                                    class="me-2">Gửi</span> <i class="mdi mdi-send"></i></button>
                         </div>
                     </div>
                 </div>
@@ -253,25 +176,13 @@
 @endsection
 
 @section('css')
-    <!-- Bootstrap Css -->
-    <link href="{{ asset('/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
     <link href="{{ asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- App Css-->
-    <link href="{{ asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/css/chat-ai.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('script')
-    <!-- JAVASCRIPT -->
-    {{-- <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('assets/libs/bootstrap/bootstrap.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('assets/libs/metismenu/metismenu.min.js') }}"></script> --}}
     <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-    {{-- <script src="{{ asset('assets/libs/node-waves/node-waves.min.js') }}"></script> --}}
-    <!-- toastr plugin -->
-    {{-- <script src="{{ asset('/assets/libs/toastr/toastr.min.js') }}"></script> --}}
-    <!-- App js -->
-    {{-- <script src="{{ asset('assets/js/app.min.js') }}"></script> --}}
 
     <script>
         $("#chat-ai").on("click", function() {
@@ -301,7 +212,13 @@
             $(".chat-input").val('')
 
             generateChatAI(message)
+            scrollToBottomChat()
         });
+
+        function scrollToBottomChat() {
+            const chat = $('.simplebar-content-wrapper');
+            chat.scrollTop(chat.prop('scrollHeight'));
+        }
 
         function generateChatAI(message) {
             $.ajax({
